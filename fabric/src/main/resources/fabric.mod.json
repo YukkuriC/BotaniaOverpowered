@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "botania_overpowered",
+  "version": "${version}",
+  "name": "BotaniaOverpowered",
+  "description": "_(:з」∠)_",
+  "authors": [
+    "YukkuriC"
+  ],
+  "contact": {
+    "homepage": "https://github.com/YukkuriC/"
+  },
+  "license": "MIT",
+  "icon": "assets/botania_overpowered/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.yukkuric.botania_overpowered.fabric.BotaniaOPFabric"
+    ],
+    "client": [
+      "io.yukkuric.botania_overpowered.fabric.client.BotaniaOPFabricClient"
+    ]
+  },
+  "mixins": [
+    "botania_overpowered.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

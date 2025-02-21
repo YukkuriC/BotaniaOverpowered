@@ -1,0 +1,29 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+#issueTrackerURL = ""
+license = "MIT"
+
+[[mods]]
+modId = "botania_overpowered"
+version = "${version}"
+displayName = "BotaniaOverpowered"
+authors = "YukkuriC"
+description = '''
+_(:з」∠)_
+'''
+#logoFile = ""
+
+[[dependencies.botania_overpowered]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.botania_overpowered]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
