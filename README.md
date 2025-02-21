@@ -1,7 +1,7 @@
 # Botania Overpowered
 
-[![Curseforge](https://badges.moddingx.org/curseforge/versions/TODO) ![CurseForge](https://badges.moddingx.org/curseforge/downloads/TODO)](https://www.curseforge.com/minecraft/mc-mods/TODO)  
-[![Modrinth](https://badges.moddingx.org/modrinth/versions/TODO) ![Modrinth](https://badges.moddingx.org/modrinth/downloads/TODO)](https://modrinth.com/mod/TODO)
+[![Curseforge](https://badges.moddingx.org/curseforge/versions/1205282) ![CurseForge](https://badges.moddingx.org/curseforge/downloads/1205282)](https://www.curseforge.com/minecraft/mc-mods/botaniaoverpowered)  
+[![Modrinth](https://badges.moddingx.org/modrinth/versions/hpVTpNjB) ![Modrinth](https://badges.moddingx.org/modrinth/downloads/hpVTpNjB)](https://modrinth.com/mod/botaniaoverpowered)
 
 An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancements / un-nerfs which are kind of overpowered.
 
@@ -19,3 +19,7 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
 -   Entropinnyum changes
     -   disables unethical duper TNT check
     -   TNTs exploding in liquids now count as valid
+
+## TODO
+
+- Forge exclusive: MekaSuit from Mekanism as mana provider

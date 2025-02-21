@@ -1,6 +1,6 @@
 modLoader = "javafml"
-loaderVersion = "[47,)"
-#issueTrackerURL = ""
+loaderVersion = "[${fml_version},)"
+issueTrackerURL = "https://github.com/YukkuriC/BotaniaOverpowered/issues"
 license = "MIT"
 
 [[mods]]
@@ -9,21 +9,30 @@ version = "${version}"
 displayName = "BotaniaOverpowered"
 authors = "YukkuriC"
 description = '''
-_(:з」∠)_
+An addon of Botania about some enhancements / un-nerfs which are kind of overpowered.
 '''
-#logoFile = ""
+logoFile = "logo.png"
+updateJSONURL = "https://api.modrinth.com/updates/hpVTpNjB/forge_updates.json"
+displayURL = "https://modrinth.com/mod/botaniaoverpowered"
 
 [[dependencies.botania_overpowered]]
 modId = "forge"
 mandatory = true
-versionRange = "[47,)"
+versionRange = "[${fml_version},)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.botania_overpowered]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20.1,)"
+versionRange = "[${minecraft_version},)"
 ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.botania_overpowered]]
+modId = "botania"
+mandatory = true
+versionRange = "[0,)"
+ordering = "AFTER"
 side = "BOTH"
 

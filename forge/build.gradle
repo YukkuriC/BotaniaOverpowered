@@ -38,11 +38,13 @@ dependencies {
     shadowBundle project(path: ':common', configuration: 'transformProductionForge')
 }
 
+var fml_version = forge_version.split('-')[1]
+fml_version = fml_version.substring(0, fml_version.indexOf("."))
 processResources {
     inputs.property 'version', project.version
 
     filesMatching('META-INF/mods.toml') {
-        expand version: project.version
+        expand version: project.version, minecraft_version: minecraft_version, fml_version: fml_version
     }
 }
 
