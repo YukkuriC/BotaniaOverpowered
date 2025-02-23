@@ -1,6 +1,7 @@
 package io.yukkuric.botania_overpowered.forge;
 
 import io.yukkuric.botania_overpowered.BotaniaOP;
+import io.yukkuric.botania_overpowered.forge.client.ManaTooltipForge;
 import io.yukkuric.botania_overpowered.forge.mekanism.MekasuitManaItem;
 import mekanism.common.item.gear.ItemMekaSuitArmor;
 import net.minecraft.core.Direction;
@@ -42,6 +43,7 @@ public final class BotaniaOPForge extends BotaniaOP {
                     }
                 });
             });
+            evBus.addListener(ManaTooltipForge::showMana);
         }
 
         var ctx = ModLoadingContext.get();

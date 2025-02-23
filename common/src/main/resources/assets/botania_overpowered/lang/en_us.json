@@ -1,3 +1,4 @@
 {
-  "bot_op.error.dandelifeon": "Error at %s: %s"
+  "bot_op.error.dandelifeon": "Error at %s: %s",
+  "bot_op.mana.display": "Mana: %s/%s(%s)"
 }
