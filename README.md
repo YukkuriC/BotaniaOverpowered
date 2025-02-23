@@ -19,7 +19,4 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
 -   Entropinnyum changes
     -   disables unethical duper TNT check
     -   TNTs exploding in liquids now count as valid
-
-## TODO
-
 - Forge exclusive: MekaSuit from Mekanism as mana provider
