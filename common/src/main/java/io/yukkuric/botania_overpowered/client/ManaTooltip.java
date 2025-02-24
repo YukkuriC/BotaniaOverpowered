@@ -1,5 +1,6 @@
 package io.yukkuric.botania_overpowered.client;
 
+import io.yukkuric.botania_overpowered.BotaniaOPConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +17,7 @@ public class ManaTooltip {
     }
 
     public static void handleManaDisplay(ItemStack stack, List<Component> tooltip) {
+        if (!BotaniaOPConfig.showManaAmount()) return;
         var manaItem = XplatAbstractions.INSTANCE.findManaItem(stack);
         if (manaItem == null) return;
         var mana = manaItem.getMana();

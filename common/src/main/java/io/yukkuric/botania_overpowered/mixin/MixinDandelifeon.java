@@ -1,5 +1,6 @@
 package io.yukkuric.botania_overpowered.mixin;
 
+import io.yukkuric.botania_overpowered.BotaniaOPConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -57,6 +58,7 @@ public abstract class MixinDandelifeon extends GeneratingFlowerBlockEntity {
 
         int diameter = table.getDiameter();
         int allowDist = 1;
+        boolean wipe = false;
         for (int i = 0; i < diameter; i++) {
             var xInRange = Math.abs(i - radius) <= allowDist;
             for (int j = 0; j < diameter; j++) {
@@ -76,6 +78,7 @@ public abstract class MixinDandelifeon extends GeneratingFlowerBlockEntity {
                     else {
                         oldLife = newLife;
                         newLife = DandelifeonBlockEntity.Cell.CONSUME;
+                        wipe = true;
                     }
                 }
 
@@ -84,11 +87,12 @@ public abstract class MixinDandelifeon extends GeneratingFlowerBlockEntity {
                 }
             }
         }
+        if (wipe && !BotaniaOPConfig.skipDandelifeonClearBoard()) wipe = false;
 
         for (var change : changes) {
             BlockPos pos_ = table.getCenter().offset(-radius + change.x(), 0, -radius + change.z());
             int newLife = change.newLife();
-
+            if (wipe) newLife = DandelifeonBlockEntity.Cell.DEAD;
             setBlockForGeneration(pos_, Math.min(newLife, MAX_MANA_GENERATIONS), change.oldLife());
         }
     }
