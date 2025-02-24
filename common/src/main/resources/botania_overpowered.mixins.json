@@ -8,7 +8,8 @@
   "mixins": [
     "MixinDandelifeon",
     "MixinDandelifeon$ITable",
-    "MixinEntropinnyum"
+    "MixinEntropinnyum",
+    "MixinNarslimmus"
   ],
   "injectors": {
     "defaultRequire": 1

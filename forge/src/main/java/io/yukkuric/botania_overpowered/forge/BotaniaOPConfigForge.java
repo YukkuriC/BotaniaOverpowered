@@ -30,15 +30,20 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public boolean enableEntropinnyumUnderwater() {
         return cfg_enableEntropinnyumUnderwater.get();
     }
+    @Override
+    public boolean skipNarslimmusNaturalCheck() {
+        return cfg_skipNarslimmusNaturalCheck.get();
+    }
 
     public ForgeConfigSpec.DoubleValue cfgMekasuitConversionRatio;
-    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater;
+    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck;
 
     public BotaniaOPConfigForge(ForgeConfigSpec.Builder builder) {
         cfg_showManaAmount = builder.define("showManaAmount", true);
         cfg_skipDandelifeonClearBoard = builder.define("skipDandelifeonClearBoard", true);
         cfg_skipEntropinnyumDuperCheck = builder.define("skipEntropinnyumDuperCheck", true);
         cfg_enableEntropinnyumUnderwater = builder.define("enableEntropinnyumUnderwater", true);
+        cfg_skipNarslimmusNaturalCheck = builder.define("skipNarslimmusNaturalCheck", true);
 
         cfgMekasuitConversionRatio = builder.comment(DESCRIP_MEKASUIT_RATIO).defineInRange("MekasuitConversionRatio", 1, 0, 1e10);
         INSTANCE = this;

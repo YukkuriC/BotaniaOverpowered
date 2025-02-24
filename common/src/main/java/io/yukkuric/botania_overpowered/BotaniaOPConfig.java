@@ -18,11 +18,15 @@ public class BotaniaOPConfig {
     public static boolean enableEntropinnyumUnderwater() {
         return CFG.enableEntropinnyumUnderwater();
     }
+    public static boolean skipNarslimmusNaturalCheck() {
+        return CFG.skipNarslimmusNaturalCheck();
+    }
 
     public interface CommonAccess {
         boolean showManaAmount();
         boolean skipDandelifeonClearBoard();
         boolean skipEntropinnyumDuperCheck();
         boolean enableEntropinnyumUnderwater();
+        boolean skipNarslimmusNaturalCheck();
     }
 }

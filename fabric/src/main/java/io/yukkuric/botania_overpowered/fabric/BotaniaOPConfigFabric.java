@@ -22,6 +22,7 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Boolean> cfg_skipDandelifeonClearBoard = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_skipEntropinnyumDuperCheck = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_enableEntropinnyumUnderwater = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_skipNarslimmusNaturalCheck = PropertyMirror.create(BOOLEAN);
 
     @Override
     public boolean showManaAmount() {
@@ -39,6 +40,10 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public boolean enableEntropinnyumUnderwater() {
         return cfg_enableEntropinnyumUnderwater.getValue();
     }
+    @Override
+    public boolean skipNarslimmusNaturalCheck() {
+        return cfg_skipNarslimmusNaturalCheck.getValue();
+    }
 
     public ConfigTree build(ConfigTreeBuilder builder) {
         builder.fork("display")
@@ -48,6 +53,7 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
                 .withMirroredValue("skipDandelifeonClearBoard", cfg_skipDandelifeonClearBoard, true)
                 .withMirroredValue("skipEntropinnyumDuperCheck", cfg_skipEntropinnyumDuperCheck, true)
                 .withMirroredValue("enableEntropinnyumUnderwater", cfg_enableEntropinnyumUnderwater, true)
+                .withMirroredValue("skipNarslimmusNaturalCheck", cfg_skipNarslimmusNaturalCheck, true)
                 .finishBranch();
         return builder.build();
     }
