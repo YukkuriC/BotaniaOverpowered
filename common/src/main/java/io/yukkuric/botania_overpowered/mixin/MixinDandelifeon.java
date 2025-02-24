@@ -87,7 +87,7 @@ public abstract class MixinDandelifeon extends GeneratingFlowerBlockEntity {
                 }
             }
         }
-        if (wipe && !BotaniaOPConfig.skipDandelifeonClearBoard()) wipe = false;
+        if (wipe && BotaniaOPConfig.skipDandelifeonClearBoard()) wipe = false;
 
         for (var change : changes) {
             BlockPos pos_ = table.getCenter().offset(-radius + change.x(), 0, -radius + change.z());
