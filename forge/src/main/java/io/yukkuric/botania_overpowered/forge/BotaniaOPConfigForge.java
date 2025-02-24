@@ -16,29 +16,29 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
 
     @Override
     public boolean showManaAmount() {
-        return false;
+        return cfg_showManaAmount.get();
     }
     @Override
     public boolean skipDandelifeonClearBoard() {
-        return false;
+        return cfg_skipDandelifeonClearBoard.get();
     }
     @Override
     public boolean skipEntropinnyumDuperCheck() {
-        return false;
+        return cfg_skipEntropinnyumDuperCheck.get();
     }
     @Override
     public boolean enableEntropinnyumUnderwater() {
-        return false;
+        return cfg_enableEntropinnyumUnderwater.get();
     }
 
     public ForgeConfigSpec.DoubleValue cfgMekasuitConversionRatio;
-    public ForgeConfigSpec.BooleanValue cfgShowManaAmount, cfgSkipDandelifeonClearBoard, cfgSkipEntropinnyumDuperCheck, cfgEnableEntropinnyumUnderwater;
+    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater;
 
     public BotaniaOPConfigForge(ForgeConfigSpec.Builder builder) {
-        cfgShowManaAmount = builder.define("showManaAmount", true);
-        cfgSkipDandelifeonClearBoard = builder.define("skipDandelifeonClearBoard", true);
-        cfgSkipEntropinnyumDuperCheck = builder.define("skipEntropinnyumDuperCheck", true);
-        cfgEnableEntropinnyumUnderwater = builder.define("enableEntropinnyumUnderwater", true);
+        cfg_showManaAmount = builder.define("showManaAmount", true);
+        cfg_skipDandelifeonClearBoard = builder.define("skipDandelifeonClearBoard", true);
+        cfg_skipEntropinnyumDuperCheck = builder.define("skipEntropinnyumDuperCheck", true);
+        cfg_enableEntropinnyumUnderwater = builder.define("enableEntropinnyumUnderwater", true);
 
         cfgMekasuitConversionRatio = builder.comment(DESCRIP_MEKASUIT_RATIO).defineInRange("MekasuitConversionRatio", 1, 0, 1e10);
         INSTANCE = this;
