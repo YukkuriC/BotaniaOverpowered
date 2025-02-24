@@ -7,6 +7,7 @@ import net.fabricmc.loader.api.FabricLoader;
 public final class BotaniaOPFabric extends BotaniaOP implements ModInitializer {
     @Override
     public void onInitialize() {
+        BotaniaOPConfigFabric.setup();
     }
 
     @Override
