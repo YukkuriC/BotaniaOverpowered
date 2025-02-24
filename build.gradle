@@ -33,8 +33,6 @@ subprojects {
         mavenLocal()
         maven { url "https://maven.blamejared.com/" }
         maven { url "https://maven.parchmentmc.net/" }
-        flatDir { dir "libs/$minecraft_version" }
-        flatDir { dir "../libs/$minecraft_version" }
     }
 
     var nameForRef = project.name.equals("common") ? "fabric" : project.name
