@@ -12,11 +12,12 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   modifyable GoL rules under `io.yukkuric.botania_overpowered.api.DandelifeonRules`; change them with KubeJS at will
         ```js
         // requires: botania_overpowered
-        let API = Java.loadClass('io.yukkuric.botania_overpowered.api.DandelifeonRules')
+        let API = Java.loadClass("io.yukkuric.botania_overpowered.api.DandelifeonRules")
         API.NEW = API.GenFromNums(1, 3, 5)
-        API.KEEP = x => x >= 1 && x <= 5
+        API.KEEP = (x) => x >= 1 && x <= 5
         ```
 -   Entropinnyum changes
     -   disables unethical duper TNT check
     -   TNTs exploding in liquids now count as valid
-- Forge exclusive: MekaSuit from Mekanism as mana provider
+-   Forge exclusive: MekaSuit from Mekanism as mana provider
+-   Config for all features above
