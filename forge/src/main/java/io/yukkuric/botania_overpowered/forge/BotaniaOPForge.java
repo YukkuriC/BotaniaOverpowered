@@ -30,7 +30,7 @@ public final class BotaniaOPForge extends BotaniaOP {
 
     public BotaniaOPForge() {
         var evBus = MinecraftForge.EVENT_BUS;
-
+        evBus.addListener(ManaTooltipForge::showMana);
         if (isModLoaded("mekanism")) {
             evBus.addGenericListener(ItemStack.class, (AttachCapabilitiesEvent<ItemStack> e) -> {
                 var stack = e.getObject();
@@ -43,7 +43,6 @@ public final class BotaniaOPForge extends BotaniaOP {
                     }
                 });
             });
-            evBus.addListener(ManaTooltipForge::showMana);
         }
 
         var ctx = ModLoadingContext.get();
