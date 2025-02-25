@@ -23,6 +23,12 @@ public class BotaniaOPConfig {
     }
 
     public interface CommonAccess {
+        static String desc_showManaAmount="displays the EVIL numbers";
+        static String desc_skipDandelifeonClearBoard="no longer wipe all cells out when consuming";
+        static String desc_skipEntropinnyumDuperCheck="accepts TNTs from dupers";
+        static String desc_enableEntropinnyumUnderwater="accepts TNTs inside liquids";
+        static String desc_skipNarslimmusNaturalCheck="accepts ALL slimes";
+
         boolean showManaAmount();
         boolean skipDandelifeonClearBoard();
         boolean skipEntropinnyumDuperCheck();

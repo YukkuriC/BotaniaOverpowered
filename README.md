@@ -9,15 +9,18 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
 
 -   Dandelifeon changes
     -   consuming center cells no longer destroys outer cells
-    -   modifyable GoL rules under `io.yukkuric.botania_overpowered.api.DandelifeonRules`; change them with KubeJS at will
-        ```js
-        // requires: botania_overpowered
-        let API = Java.loadClass("io.yukkuric.botania_overpowered.api.DandelifeonRules")
-        API.NEW = API.GenFromNums(1, 3, 5)
-        API.KEEP = (x) => x >= 1 && x <= 5
-        ```
+    -   modifyable GoL rules
+        -   API under `io.yukkuric.botania_overpowered.api.DandelifeonRules`; change them with KubeJS at will
+            ```js
+            // requires: botania_overpowered
+            let API = Java.loadClass("io.yukkuric.botania_overpowered.api.DandelifeonRules")
+            API.NEW = API.GenFromNums(1, 3, 5)
+            API.KEEP = (x) => x >= 1 && x <= 5
+            ```
 -   Entropinnyum changes
     -   disables unethical duper TNT check
     -   TNTs exploding in liquids now count as valid
+-   Narslimmus changes
+    -   accepts all slimes, including ones from cages/eggs/split, magma cubes, (theoretically) TConstruct varieties, etc.
 -   Forge exclusive: MekaSuit from Mekanism as mana provider
 -   Config for all features above

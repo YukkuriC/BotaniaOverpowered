@@ -47,13 +47,29 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
 
     public ConfigTree build(ConfigTreeBuilder builder) {
         builder.fork("display")
-                .withMirroredValue("showManaAmount", cfg_showManaAmount, true)
+                .beginValue("showManaAmount", BOOLEAN, true)
+                .withComment(desc_showManaAmount).finishValue(cfg_showManaAmount::mirror)
                 .finishBranch();
+
         builder.fork("features")
-                .withMirroredValue("skipDandelifeonClearBoard", cfg_skipDandelifeonClearBoard, true)
-                .withMirroredValue("skipEntropinnyumDuperCheck", cfg_skipEntropinnyumDuperCheck, true)
-                .withMirroredValue("enableEntropinnyumUnderwater", cfg_enableEntropinnyumUnderwater, true)
-                .withMirroredValue("skipNarslimmusNaturalCheck", cfg_skipNarslimmusNaturalCheck, true)
+
+                .fork("Dandelifeon")
+                .beginValue("skipDandelifeonClearBoard", BOOLEAN, true)
+                .withComment(desc_skipDandelifeonClearBoard).finishValue(cfg_skipDandelifeonClearBoard::mirror)
+                .finishBranch()
+
+                .fork("Entropinnyum")
+                .beginValue("skipEntropinnyumDuperCheck", BOOLEAN, true)
+                .withComment(desc_skipEntropinnyumDuperCheck).finishValue(cfg_skipEntropinnyumDuperCheck::mirror)
+                .beginValue("enableEntropinnyumUnderwater", BOOLEAN, true)
+                .withComment(desc_enableEntropinnyumUnderwater).finishValue(cfg_enableEntropinnyumUnderwater::mirror)
+                .finishBranch()
+
+                .fork("Narslimmus")
+                .beginValue("skipNarslimmusNaturalCheck", BOOLEAN, true)
+                .withComment(desc_skipNarslimmusNaturalCheck).finishValue(cfg_skipNarslimmusNaturalCheck::mirror)
+                .finishBranch()
+
                 .finishBranch();
         return builder.build();
     }
@@ -73,18 +89,27 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
         // from https://github.com/VazkiiMods/Botania/blob/1.20.x/Fabric/src/main/java/vazkii/botania/fabric/FiberBotaniaConfig.java
         var cfgPath = Paths.get("config", BotaniaOP.MOD_ID + "-common.json5");
         {
-            // write default
-            try (OutputStream s = new BufferedOutputStream(Files.newOutputStream(cfgPath, StandardOpenOption.WRITE, StandardOpenOption.CREATE_NEW))) {
-                FiberSerialization.serialize(config, s, serializer);
-            } catch (FileAlreadyExistsException ignored) {
-            } catch (IOException e) {
-                BotaniaAPI.LOGGER.error("Error writing default config", e);
-            }
+            var cfgFile = cfgPath.toFile();
             // read file
-            try (InputStream s = new BufferedInputStream(Files.newInputStream(cfgPath, StandardOpenOption.READ, StandardOpenOption.CREATE))) {
-                FiberSerialization.deserialize(config, s, serializer);
+            try {
+                if (cfgFile.exists()) {
+                    try (InputStream s = new BufferedInputStream(Files.newInputStream(cfgPath, StandardOpenOption.READ, StandardOpenOption.CREATE))) {
+                        FiberSerialization.deserialize(config, s, serializer);
+                    }
+                }
             } catch (IOException | ValueDeserializationException e) {
-                BotaniaAPI.LOGGER.error("Error loading config from {}", cfgPath, e);
+                BotaniaAPI.LOGGER.error("Error loading config from {} {}", cfgPath, e);
+                try {
+                    cfgPath.toFile().delete();
+                } catch (Throwable ee) {
+                    BotaniaAPI.LOGGER.error("Error removing invalid config {} {}", cfgPath, ee);
+                }
+            }
+            // write back for format update
+            try (OutputStream s = new BufferedOutputStream(Files.newOutputStream(cfgPath, StandardOpenOption.WRITE, StandardOpenOption.CREATE))) {
+                FiberSerialization.serialize(config, s, serializer);
+            } catch (IOException e) {
+                BotaniaAPI.LOGGER.error("Error writing back config", e);
             }
         }
         BotaniaOPConfig.bindConfig(INSTANCE);

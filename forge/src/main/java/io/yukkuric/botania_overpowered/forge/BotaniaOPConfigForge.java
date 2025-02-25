@@ -39,13 +39,34 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck;
 
     public BotaniaOPConfigForge(ForgeConfigSpec.Builder builder) {
-        cfg_showManaAmount = builder.define("showManaAmount", true);
-        cfg_skipDandelifeonClearBoard = builder.define("skipDandelifeonClearBoard", true);
-        cfg_skipEntropinnyumDuperCheck = builder.define("skipEntropinnyumDuperCheck", true);
-        cfg_enableEntropinnyumUnderwater = builder.define("enableEntropinnyumUnderwater", true);
-        cfg_skipNarslimmusNaturalCheck = builder.define("skipNarslimmusNaturalCheck", true);
+        builder.push("display");
+        cfg_showManaAmount = builder.comment(desc_showManaAmount)
+                .define("showManaAmount", true);
+        builder.pop();
 
+        builder.push("features");
+
+        builder.push("Dandelifeon");
+        cfg_skipDandelifeonClearBoard = builder.comment(desc_skipDandelifeonClearBoard)
+                .define("skipDandelifeonClearBoard", true);
+        builder.pop();
+
+        builder.push("Entropinnyum");
+        cfg_skipEntropinnyumDuperCheck = builder.comment(desc_skipEntropinnyumDuperCheck)
+                .define("skipEntropinnyumDuperCheck", true);
+        cfg_enableEntropinnyumUnderwater = builder.comment(desc_enableEntropinnyumUnderwater)
+                .define("enableEntropinnyumUnderwater", true);
+        builder.pop();
+
+        builder.push("Narslimmus");
+        cfg_skipNarslimmusNaturalCheck = builder.comment(desc_skipNarslimmusNaturalCheck)
+                .define("skipNarslimmusNaturalCheck", true);
+        builder.pop();
+
+        builder.push("interop");
         cfgMekasuitConversionRatio = builder.comment(DESCRIP_MEKASUIT_RATIO).defineInRange("MekasuitConversionRatio", 1, 0, 1e10);
+        builder.pop();
+
         INSTANCE = this;
         BotaniaOPConfig.bindConfig(this);
     }
