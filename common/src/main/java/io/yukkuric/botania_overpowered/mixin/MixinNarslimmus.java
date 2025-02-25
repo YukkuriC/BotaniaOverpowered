@@ -19,7 +19,7 @@ public class MixinNarslimmus {
         return true;
     }
 
-    @Inject(method = "onSpawn", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "onSpawn", at = @At("HEAD"), cancellable = true, remap = false)
     private static void noSetNatural(Entity entity, CallbackInfo ci) {
         if (BotaniaOPConfig.skipNarslimmusNaturalCheck()) ci.cancel();
     }

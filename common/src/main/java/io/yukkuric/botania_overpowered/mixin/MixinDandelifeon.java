@@ -23,10 +23,10 @@ import static vazkii.botania.common.block.flower.generating.DandelifeonBlockEnti
 
 @Mixin(DandelifeonBlockEntity.class)
 public abstract class MixinDandelifeon extends GeneratingFlowerBlockEntity {
-    @Shadow
+    @Shadow(remap = false)
     private int radius;
 
-    @Shadow
+    @Shadow(remap = false)
     abstract void setBlockForGeneration(BlockPos pos, int cell, int prevCell);
 
     public MixinDandelifeon(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -99,19 +99,19 @@ public abstract class MixinDandelifeon extends GeneratingFlowerBlockEntity {
 
     @Mixin(targets = {CLASSNAME_TABLE})
     public interface ITable {
-        @Accessor("center")
+        @Accessor(value = "center", remap = false)
         BlockPos getCenter();
 
-        @Accessor("diameter")
+        @Accessor(value = "diameter", remap = false)
         int getDiameter();
 
-        @Invoker("getAdjCells")
+        @Invoker(value = "getAdjCells", remap = false)
         int countScore(int x, int z);
 
-        @Invoker("getSpawnCellGeneration")
+        @Invoker(value = "getSpawnCellGeneration", remap = false)
         int nextStage(int x, int z);
 
-        @Invoker("at")
+        @Invoker(value = "at", remap = false)
         int curStage(int x, int z);
     }
 }
