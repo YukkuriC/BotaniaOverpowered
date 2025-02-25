@@ -7,6 +7,7 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
 
 ## Features
 
+-   Displays the _`Evil`_ numbers inside tablets
 -   Dandelifeon changes
     -   consuming center cells no longer destroys outer cells
     -   modifyable GoL rules
