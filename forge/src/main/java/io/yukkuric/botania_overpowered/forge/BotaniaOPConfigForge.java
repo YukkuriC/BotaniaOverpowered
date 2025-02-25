@@ -23,6 +23,14 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
         return cfg_skipDandelifeonClearBoard.get();
     }
     @Override
+    public int ruleLifeGameNew() {
+        return cfg_ruleLifeGameNew.get();
+    }
+    @Override
+    public int ruleLifeGameKeep() {
+        return cfg_ruleLifeGameKeep.get();
+    }
+    @Override
     public boolean skipEntropinnyumDuperCheck() {
         return cfg_skipEntropinnyumDuperCheck.get();
     }
@@ -37,6 +45,7 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
 
     public ForgeConfigSpec.DoubleValue cfgMekasuitConversionRatio;
     public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck;
+    public ForgeConfigSpec.IntValue cfg_ruleLifeGameNew, cfg_ruleLifeGameKeep;
 
     public BotaniaOPConfigForge(ForgeConfigSpec.Builder builder) {
         builder.push("display");
@@ -49,6 +58,10 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
         builder.push("Dandelifeon");
         cfg_skipDandelifeonClearBoard = builder.comment(desc_skipDandelifeonClearBoard)
                 .define("skipDandelifeonClearBoard", true);
+        cfg_ruleLifeGameNew = builder.comment(desc_ruleLifeGameNew)
+                .defineInRange("ruleLifeGameNew", 8, 0, 255);
+        cfg_ruleLifeGameKeep = builder.comment(desc_ruleLifeGameKeep)
+                .defineInRange("ruleLifeGameKeep", 12, 0, 255);
         builder.pop();
 
         builder.push("Entropinnyum");

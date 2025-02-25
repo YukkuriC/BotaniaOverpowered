@@ -8,12 +8,12 @@ import io.github.fablabsmc.fablabs.api.fiber.v1.tree.ConfigTree;
 import io.github.fablabsmc.fablabs.api.fiber.v1.tree.PropertyMirror;
 import io.yukkuric.botania_overpowered.BotaniaOP;
 import io.yukkuric.botania_overpowered.BotaniaOPConfig;
-import vazkii.botania.api.BotaniaAPI;
 
 import java.io.*;
 import java.nio.file.*;
 
 import static io.github.fablabsmc.fablabs.api.fiber.v1.schema.type.derived.ConfigTypes.BOOLEAN;
+import static io.github.fablabsmc.fablabs.api.fiber.v1.schema.type.derived.ConfigTypes.SHORT;
 
 public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public static final BotaniaOPConfigFabric INSTANCE = new BotaniaOPConfigFabric();
@@ -23,6 +23,8 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Boolean> cfg_skipEntropinnyumDuperCheck = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_enableEntropinnyumUnderwater = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_skipNarslimmusNaturalCheck = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Short> cfg_ruleLifeGameNew = PropertyMirror.create(SHORT);
+    public final PropertyMirror<Short> cfg_ruleLifeGameKeep = PropertyMirror.create(SHORT);
 
     @Override
     public boolean showManaAmount() {
@@ -31,6 +33,14 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     @Override
     public boolean skipDandelifeonClearBoard() {
         return cfg_skipDandelifeonClearBoard.getValue();
+    }
+    @Override
+    public int ruleLifeGameNew() {
+        return cfg_ruleLifeGameNew.getValue();
+    }
+    @Override
+    public int ruleLifeGameKeep() {
+        return cfg_ruleLifeGameKeep.getValue();
     }
     @Override
     public boolean skipEntropinnyumDuperCheck() {
@@ -56,6 +66,10 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
                 .fork("Dandelifeon")
                 .beginValue("skipDandelifeonClearBoard", BOOLEAN, true)
                 .withComment(desc_skipDandelifeonClearBoard).finishValue(cfg_skipDandelifeonClearBoard::mirror)
+                .beginValue("ruleLifeGameNew", SHORT, (short) 8)
+                .withComment(desc_ruleLifeGameNew).finishValue(cfg_ruleLifeGameNew::mirror)
+                .beginValue("ruleLifeGameKeep", SHORT, (short) 12)
+                .withComment(desc_ruleLifeGameKeep).finishValue(cfg_ruleLifeGameKeep::mirror)
                 .finishBranch()
 
                 .fork("Entropinnyum")
@@ -80,7 +94,7 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
             Files.createDirectory(Paths.get("config"));
         } catch (FileAlreadyExistsException ignored) {
         } catch (IOException e) {
-            BotaniaAPI.LOGGER.warn("Failed to make config dir", e);
+            BotaniaOP.LOGGER.warn("Failed to make config dir", e);
         }
 
         var serializer = new JanksonValueSerializer(false);
@@ -98,18 +112,18 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
                     }
                 }
             } catch (IOException | ValueDeserializationException e) {
-                BotaniaAPI.LOGGER.error("Error loading config from {} {}", cfgPath, e);
+                BotaniaOP.LOGGER.error("Error loading config from {}", cfgPath, e);
                 try {
                     cfgPath.toFile().delete();
                 } catch (Throwable ee) {
-                    BotaniaAPI.LOGGER.error("Error removing invalid config {} {}", cfgPath, ee);
+                    BotaniaOP.LOGGER.error("Error removing invalid config {}", cfgPath, ee);
                 }
             }
             // write back for format update
             try (OutputStream s = new BufferedOutputStream(Files.newOutputStream(cfgPath, StandardOpenOption.WRITE, StandardOpenOption.CREATE))) {
                 FiberSerialization.serialize(config, s, serializer);
             } catch (IOException e) {
-                BotaniaAPI.LOGGER.error("Error writing back config", e);
+                BotaniaOP.LOGGER.error("Error writing back config {}", cfgPath, e);
             }
         }
         BotaniaOPConfig.bindConfig(INSTANCE);

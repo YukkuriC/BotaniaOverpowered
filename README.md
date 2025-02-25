@@ -10,7 +10,11 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
 -   Dandelifeon changes
     -   consuming center cells no longer destroys outer cells
     -   modifyable GoL rules
-        -   API under `io.yukkuric.botania_overpowered.api.DandelifeonRules`; change them with KubeJS at will
+        -   configurable by two bitset numbers for `New` and `Keep`
+            -   for example, the default rule is `new=8; keep=12`:
+                -   8 = 2 ^ **`3`** -> new cell with **`3`** neighbors
+                -   12 = 8 + 4 = 2 ^ **`3`** + 2 ^ **`2`** -> cell keeps alive with **`2`** or **`3`** neighbors
+        -   API under `io.yukkuric.botania_overpowered.api.DandelifeonRules`; change them with KubeJS at will (has higher priority)
             ```js
             // requires: botania_overpowered
             let API = Java.loadClass("io.yukkuric.botania_overpowered.api.DandelifeonRules")
