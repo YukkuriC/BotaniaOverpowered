@@ -7,7 +7,6 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
 
 ## Features
 
--   Displays the _`Evil`_ numbers inside tablets
 -   Dandelifeon changes
     -   consuming center cells no longer destroys outer cells
     -   modifyable GoL rules
@@ -26,6 +25,8 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   disables unethical duper TNT check
     -   TNTs exploding in liquids now count as valid
 -   Narslimmus changes
-    -   accepts all slimes, including ones from cages/eggs/split, magma cubes, (theoretically) TConstruct varieties, etc.
--   Forge exclusive: MekaSuit from Mekanism as mana provider
+    -   ignores slime chunk restrictions and accepts ALL slimes, including ones from cages/eggs/split, magma cubes, (theoretically) TConstruct varieties, etc.
+-   Misc features
+    -   Displays the _`Evil`_ numbers inside tablets
+    -   Forge exclusive: MekaSuit from Mekanism as mana provider
 -   Config for all features above
