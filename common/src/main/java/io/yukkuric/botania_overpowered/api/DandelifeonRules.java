@@ -7,15 +7,23 @@ import java.util.List;
 import java.util.function.Function;
 
 public class DandelifeonRules {
-    public static RuleFunc NEW, KEEP;
+    private static RuleFunc NEW, KEEP;
+    private static RuleFunc NEW_CFG, KEEP_CFG;
     public static void keepAlive() {
     }
 
-    static {
-        BotaniaOPConfig.bindConfigLoaded(cfg -> {
-            if (NEW == null) NEW = GenFromBitset(cfg.ruleLifeGameNew());
-            if (KEEP == null) KEEP = GenFromBitset(cfg.ruleLifeGameKeep());
-        });
+    // interface
+    public static boolean CheckRuleNew(int count) {
+        // init cache
+        if (NEW_CFG == null) NEW_CFG = GenFromBitset(BotaniaOPConfig.ruleLifeGameNew());
+        if (NEW == null) NEW = NEW_CFG;
+        return NEW.apply(count);
+    }
+    public static boolean CheckRuleKeep(int count) {
+        // init cache
+        if (KEEP_CFG == null) KEEP_CFG = GenFromBitset(BotaniaOPConfig.ruleLifeGameKeep());
+        if (KEEP == null) KEEP = KEEP_CFG;
+        return KEEP.apply(count);
     }
 
     public static RuleFunc GenFromNums(Integer... targets) {

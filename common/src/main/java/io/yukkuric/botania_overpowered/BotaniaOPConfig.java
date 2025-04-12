@@ -1,25 +1,10 @@
 package io.yukkuric.botania_overpowered;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-
 public class BotaniaOPConfig {
     static CommonAccess CFG;
-    static final List<Consumer<CommonAccess>> onLoadedCFG = new ArrayList<>();
 
-    public static void bindConfigLoaded(Consumer<CommonAccess> trigger) {
-        onLoadedCFG.add(trigger);
-    }
     public static void bindConfig(CommonAccess cfg) {
         CFG = cfg;
-        for (var f : onLoadedCFG) {
-            try {
-                f.accept(cfg);
-            } catch (Throwable e) {
-                BotaniaOP.LOGGER.error("Error on loading config", e);
-            }
-        }
     }
 
     public static boolean showManaAmount() {
@@ -36,6 +21,12 @@ public class BotaniaOPConfig {
     }
     public static boolean skipNarslimmusNaturalCheck() {
         return CFG.skipNarslimmusNaturalCheck();
+    }
+    public static int ruleLifeGameNew() {
+        return CFG.ruleLifeGameNew();
+    }
+    public static int ruleLifeGameKeep() {
+        return CFG.ruleLifeGameKeep();
     }
 
     public interface CommonAccess {
