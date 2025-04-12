@@ -66,9 +66,9 @@ public abstract class MixinDandelifeon extends GeneratingFlowerBlockEntity {
                 int adj = table.countScore(i, j);
 
                 int newLife;
-                if (oldLife == DandelifeonBlockEntity.Cell.DEAD && NEW.apply(adj))
+                if (oldLife == DandelifeonBlockEntity.Cell.DEAD && CheckRuleNew(adj))
                     newLife = table.nextStage(i, j);
-                else if (DandelifeonBlockEntity.Cell.isLive(oldLife) && KEEP.apply(adj))
+                else if (DandelifeonBlockEntity.Cell.isLive(oldLife) && CheckRuleKeep(adj))
                     newLife = oldLife + 1;
                 else newLife = DandelifeonBlockEntity.Cell.DEAD;
 
