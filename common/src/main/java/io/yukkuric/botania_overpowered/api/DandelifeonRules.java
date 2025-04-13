@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class DandelifeonRules {
-    private static RuleFunc NEW, KEEP;
+    public static RuleFunc NEW, KEEP;
     private static RuleFunc NEW_CFG, KEEP_CFG;
     public static void keepAlive() {
     }
