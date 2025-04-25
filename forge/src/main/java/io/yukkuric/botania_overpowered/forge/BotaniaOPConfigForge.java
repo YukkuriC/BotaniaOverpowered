@@ -42,9 +42,13 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public boolean skipNarslimmusNaturalCheck() {
         return cfg_skipNarslimmusNaturalCheck.get();
     }
+    @Override
+    public boolean heatsBlazeBurner() {
+        return cfg_heatsBlazeBurner.get();
+    }
 
     public ForgeConfigSpec.DoubleValue cfgMekasuitConversionRatio;
-    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck;
+    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner;
     public ForgeConfigSpec.IntValue cfg_ruleLifeGameNew, cfg_ruleLifeGameKeep;
 
     public BotaniaOPConfigForge(ForgeConfigSpec.Builder builder) {
@@ -74,6 +78,11 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
         builder.push("Narslimmus");
         cfg_skipNarslimmusNaturalCheck = builder.comment(desc_skipNarslimmusNaturalCheck)
                 .define("skipNarslimmusNaturalCheck", true);
+        builder.pop();
+
+        builder.push("Exoflame");
+        cfg_heatsBlazeBurner = builder.comment(desc_heatsBlazeBurner)
+                .define("heatsBlazeBurner", true);
         builder.pop();
 
         builder.push("interop");

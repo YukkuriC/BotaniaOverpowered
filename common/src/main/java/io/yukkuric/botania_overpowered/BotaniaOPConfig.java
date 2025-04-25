@@ -28,6 +28,9 @@ public class BotaniaOPConfig {
     public static int ruleLifeGameKeep() {
         return CFG.ruleLifeGameKeep();
     }
+    public static boolean heatsBlazeBurner() {
+        return CFG.heatsBlazeBurner();
+    }
 
     public interface CommonAccess {
         static String desc_showManaAmount = "displays the EVIL numbers";
@@ -37,6 +40,7 @@ public class BotaniaOPConfig {
         static String desc_skipEntropinnyumDuperCheck = "accepts TNTs from dupers";
         static String desc_enableEntropinnyumUnderwater = "accepts TNTs inside liquids";
         static String desc_skipNarslimmusNaturalCheck = "accepts ALL slimes";
+        static String desc_heatsBlazeBurner = "heats Blaze Burner blocks from Create";
 
         boolean showManaAmount();
         boolean skipDandelifeonClearBoard();
@@ -45,5 +49,6 @@ public class BotaniaOPConfig {
         boolean skipEntropinnyumDuperCheck();
         boolean enableEntropinnyumUnderwater();
         boolean skipNarslimmusNaturalCheck();
+        boolean heatsBlazeBurner();
     }
 }
