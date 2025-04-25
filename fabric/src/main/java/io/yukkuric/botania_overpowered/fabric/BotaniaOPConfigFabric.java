@@ -25,6 +25,7 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Boolean> cfg_skipNarslimmusNaturalCheck = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Short> cfg_ruleLifeGameNew = PropertyMirror.create(SHORT);
     public final PropertyMirror<Short> cfg_ruleLifeGameKeep = PropertyMirror.create(SHORT);
+    public final PropertyMirror<Boolean> cfg_heatsBlazeBurner = PropertyMirror.create(BOOLEAN);
 
     @Override
     public boolean showManaAmount() {
@@ -54,6 +55,10 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public boolean skipNarslimmusNaturalCheck() {
         return cfg_skipNarslimmusNaturalCheck.getValue();
     }
+    @Override
+    public boolean heatsBlazeBurner() {
+        return cfg_heatsBlazeBurner.getValue();
+    }
 
     public ConfigTree build(ConfigTreeBuilder builder) {
         builder.fork("display")
@@ -82,6 +87,11 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
                 .fork("Narslimmus")
                 .beginValue("skipNarslimmusNaturalCheck", BOOLEAN, true)
                 .withComment(desc_skipNarslimmusNaturalCheck).finishValue(cfg_skipNarslimmusNaturalCheck::mirror)
+                .finishBranch()
+                
+                .fork("Exoflame")
+                .beginValue("heatsBlazeBurner", BOOLEAN, true)
+                .withComment(desc_heatsBlazeBurner).finishValue(cfg_heatsBlazeBurner::mirror)
                 .finishBranch()
 
                 .finishBranch();

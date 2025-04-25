@@ -26,6 +26,8 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   TNTs exploding in liquids now count as valid
 -   Narslimmus changes
     -   ignores slime chunk restrictions and accepts ALL slimes, including ones from cages/eggs/split, magma cubes, (theoretically) TConstruct varieties, etc.
+-   Exoflame changes (Create compat)
+    -   lights up Blaze Burner blocks nearby, if they have valid working blocks above
 -   Misc features
     -   Displays the _`Evil`_ numbers inside tablets
     -   Forge exclusive: MekaSuit from Mekanism as mana provider

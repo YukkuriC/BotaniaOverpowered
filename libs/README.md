@@ -1,0 +1,3 @@
+- Create(forge) jar goes here
+    - do NOT put create fabric jar into `fabric/libs`, cuz gradle won't accept it
+- Mekanism goes into `forge/libs`
