@@ -6,6 +6,7 @@
   "client": [
   ],
   "mixins": [
+    "BlazeBurnerAccessor",
     "MixinDandelifeon",
     "MixinDandelifeon$ITable",
     "MixinEntropinnyum",

@@ -4,7 +4,7 @@ import com.simibubi.create.content.processing.burner.BlazeBurnerBlockEntity;
 import io.yukkuric.botania_overpowered.BotaniaOP;
 import io.yukkuric.botania_overpowered.BotaniaOPConfig;
 import io.yukkuric.botania_overpowered.forge.client.ManaTooltipForge;
-import io.yukkuric.botania_overpowered.forge.create.BurnerExoflameHandler;
+import io.yukkuric.botania_overpowered.create.BurnerExoflameHandler;
 import io.yukkuric.botania_overpowered.forge.mekanism.MekasuitManaItem;
 import mekanism.common.item.gear.ItemMekaSuitArmor;
 import net.minecraft.resources.ResourceLocation;

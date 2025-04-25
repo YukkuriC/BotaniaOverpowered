@@ -1,7 +1,7 @@
-package io.yukkuric.botania_overpowered.forge.create;
+package io.yukkuric.botania_overpowered.create;
 
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlockEntity;
-import io.yukkuric.botania_overpowered.forge.mixin.BlazeBurnerAccessor;
+import io.yukkuric.botania_overpowered.mixin.BlazeBurnerAccessor;
 import vazkii.botania.api.block.ExoflameHeatable;
 
 public class BurnerExoflameHandler implements ExoflameHeatable {

@@ -1,4 +1,4 @@
-package io.yukkuric.botania_overpowered.forge.mixin;
+package io.yukkuric.botania_overpowered.mixin;
 
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlockEntity;
 import org.spongepowered.asm.mixin.Mixin;
