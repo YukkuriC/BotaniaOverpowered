@@ -89,7 +89,7 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
         return getBoundTargetAt(bindPos);
     }
     public Vec3 getBoundCenter() {
-        return bindPos.getCenter();
+        return Vec3.atCenterOf(bindPos);
     }
 
     // pump tick mixin
@@ -113,7 +113,7 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
         // client fx
         if (level.isClientSide && extractAmount > 0 && BotaniaOPConfig.enablesPylonPumpFx()) {
             var variant = ((PylonBlock) state.getBlock()).variant;
-            var start = worldPosition.getCenter();
+            var start = Vec3.atCenterOf(worldPosition);
             var end = ((PylonPumpExt) self).getBoundCenter();
             var dir = end.subtract(start).normalize().scale(0.5);
             start = start.add(dir);
