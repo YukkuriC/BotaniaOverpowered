@@ -1,0 +1,85 @@
+- category: Display
+  default: 'true'
+  descrip: displays the EVIL numbers
+  name: showManaAmount
+  side: common
+  type: boolean
+- category: Dandelifeon
+  default: 'true'
+  descrip: no longer wipe all cells out when consuming
+  name: skipDandelifeonClearBoard
+  side: common
+  type: boolean
+- category: Dandelifeon
+  default: 8, 0, 255
+  descrip: custom rule bitset for new cells
+  name: ruleLifeGameNew
+  side: common
+  type: int
+- category: Dandelifeon
+  default: 12, 0, 255
+  descrip: custom rule bitset for keeping cells
+  name: ruleLifeGameKeep
+  side: common
+  type: int
+- category: Entropinnyum
+  default: 'true'
+  descrip: accepts TNTs from dupers
+  name: skipEntropinnyumDuperCheck
+  side: common
+  type: boolean
+- category: Entropinnyum
+  default: 'true'
+  descrip: accepts TNTs inside liquids
+  name: enableEntropinnyumUnderwater
+  side: common
+  type: boolean
+- category: Narslimmus
+  default: 'true'
+  descrip: accepts ALL slimes
+  name: skipNarslimmusNaturalCheck
+  side: common
+  type: boolean
+- category: Exoflame
+  default: 'true'
+  descrip: heats Blaze Burner blocks from Create
+  name: heatsBlazeBurner
+  side: common
+  type: boolean
+- category: ManaPylonPump
+  default: 'true'
+  descrip: makes Mana Pylons extract mana from the pool below and dump to wand-bound
+    mana pool
+  name: enablesManaPylonPump
+  side: common
+  type: boolean
+- category: ManaPylonPump
+  default: 32, 1, 256
+  descrip: max distance between the pylon and the pool bound
+  name: pylonPumpMaxRange
+  side: common
+  type: int
+- category: ManaPylonPump
+  default: 10000, 1, Integer.MAX_VALUE
+  descrip: how many mana points will be extracted each tick (for reference, each spark pair has speed of 1000)
+  name: pylonPumpSpeed
+  side: common
+  type: int
+- category: ManaPylonPump
+  default: 0.1, 0, 1
+  descrip: how much ratio of mana will vanish during the transport
+  name: pylonPumpLossRatio
+  side: common
+  type: double
+- category: ManaPylonPump
+  default: 'true'
+  descrip: displays extra particles when the pylon pump works
+  name: enablesPylonPumpFx
+  side: common
+  type: boolean
+- category: Interop
+  default: 1, 0, 1e10
+  descrip: how many mana points each FE point equals
+  name: MekasuitConversionRatio
+  side: forge
+  type: double
