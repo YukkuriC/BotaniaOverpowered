@@ -1,5 +1,6 @@
 package io.yukkuric.botania_overpowered.forge.mekanism;
 
+import com.google.common.base.Suppliers;
 import io.yukkuric.botania_overpowered.forge.BotaniaOPConfigForge;
 import mekanism.api.energy.IEnergyContainer;
 import mekanism.api.math.FloatingLong;
@@ -8,11 +9,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import vazkii.botania.api.mana.ManaItem;
 
+import java.util.function.Supplier;
+
 public class MekasuitManaItem implements ManaItem {
-    final IEnergyContainer source;
+    final Supplier<IEnergyContainer> source;
 
     public MekasuitManaItem(ItemStack target) {
-        source = StorageUtils.getEnergyContainer(target, 0);
+        source = Suppliers.memoize(() -> StorageUtils.getEnergyContainer(target, 0));
     }
 
     static int Joule2Mana(FloatingLong raw) {
@@ -26,12 +29,12 @@ public class MekasuitManaItem implements ManaItem {
 
     @Override
     public int getMana() {
-        return Joule2Mana(source.getEnergy());
+        return Joule2Mana(source.get().getEnergy());
     }
 
     @Override
     public int getMaxMana() {
-        return Joule2Mana(source.getMaxEnergy());
+        return Joule2Mana(source.get().getMaxEnergy());
     }
 
     @Override
@@ -41,7 +44,7 @@ public class MekasuitManaItem implements ManaItem {
         var finalMana = getMana() + i;
         finalMana = Math.max(finalMana, 0);
         var fe = FloatingLong.create(finalMana / ratio);
-        source.setEnergy(fe.multiply(2.5)); // fe -> j
+        source.get().setEnergy(fe.multiply(2.5)); // fe -> j
     }
 
     @Override
