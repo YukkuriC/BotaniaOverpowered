@@ -12,88 +12,101 @@ import io.yukkuric.botania_overpowered.BotaniaOPConfig;
 import java.io.*;
 import java.nio.file.*;
 
-import static io.github.fablabsmc.fablabs.api.fiber.v1.schema.type.derived.ConfigTypes.BOOLEAN;
-import static io.github.fablabsmc.fablabs.api.fiber.v1.schema.type.derived.ConfigTypes.SHORT;
+import static io.github.fablabsmc.fablabs.api.fiber.v1.schema.type.derived.ConfigTypes.*;
 
 public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public static final BotaniaOPConfigFabric INSTANCE = new BotaniaOPConfigFabric();
-
     public final PropertyMirror<Boolean> cfg_showManaAmount = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_skipDandelifeonClearBoard = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Integer> cfg_ruleLifeGameNew = PropertyMirror.create(INTEGER);
+    public final PropertyMirror<Integer> cfg_ruleLifeGameKeep = PropertyMirror.create(INTEGER);
     public final PropertyMirror<Boolean> cfg_skipEntropinnyumDuperCheck = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_enableEntropinnyumUnderwater = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_skipNarslimmusNaturalCheck = PropertyMirror.create(BOOLEAN);
-    public final PropertyMirror<Short> cfg_ruleLifeGameNew = PropertyMirror.create(SHORT);
-    public final PropertyMirror<Short> cfg_ruleLifeGameKeep = PropertyMirror.create(SHORT);
     public final PropertyMirror<Boolean> cfg_heatsBlazeBurner = PropertyMirror.create(BOOLEAN);
-
-    @Override
+    public final PropertyMirror<Boolean> cfg_enablesManaPylonPump = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Integer> cfg_pylonPumpMaxRange = PropertyMirror.create(INTEGER);
+    public final PropertyMirror<Integer> cfg_pylonPumpSpeed = PropertyMirror.create(INTEGER);
+    public final PropertyMirror<Double> cfg_pylonPumpLossRatio = PropertyMirror.create(DOUBLE);
+    public final PropertyMirror<Boolean> cfg_enablesPylonPumpFx = PropertyMirror.create(BOOLEAN);
     public boolean showManaAmount() {
         return cfg_showManaAmount.getValue();
     }
-    @Override
     public boolean skipDandelifeonClearBoard() {
         return cfg_skipDandelifeonClearBoard.getValue();
     }
-    @Override
     public int ruleLifeGameNew() {
         return cfg_ruleLifeGameNew.getValue();
     }
-    @Override
     public int ruleLifeGameKeep() {
         return cfg_ruleLifeGameKeep.getValue();
     }
-    @Override
     public boolean skipEntropinnyumDuperCheck() {
         return cfg_skipEntropinnyumDuperCheck.getValue();
     }
-    @Override
     public boolean enableEntropinnyumUnderwater() {
         return cfg_enableEntropinnyumUnderwater.getValue();
     }
-    @Override
     public boolean skipNarslimmusNaturalCheck() {
         return cfg_skipNarslimmusNaturalCheck.getValue();
     }
-    @Override
     public boolean heatsBlazeBurner() {
         return cfg_heatsBlazeBurner.getValue();
     }
+    public boolean enablesManaPylonPump() {
+        return cfg_enablesManaPylonPump.getValue();
+    }
+    public int pylonPumpMaxRange() {
+        return cfg_pylonPumpMaxRange.getValue();
+    }
+    public int pylonPumpSpeed() {
+        return cfg_pylonPumpSpeed.getValue();
+    }
+    public double pylonPumpLossRatio() {
+        return cfg_pylonPumpLossRatio.getValue();
+    }
+    public boolean enablesPylonPumpFx() {
+        return cfg_enablesPylonPumpFx.getValue();
+    }
 
     public ConfigTree build(ConfigTreeBuilder builder) {
-        builder.fork("display")
+        builder.fork("Display")
                 .beginValue("showManaAmount", BOOLEAN, true)
                 .withComment(desc_showManaAmount).finishValue(cfg_showManaAmount::mirror)
                 .finishBranch();
-
-        builder.fork("features")
-
-                .fork("Dandelifeon")
+        builder.fork("Dandelifeon")
                 .beginValue("skipDandelifeonClearBoard", BOOLEAN, true)
                 .withComment(desc_skipDandelifeonClearBoard).finishValue(cfg_skipDandelifeonClearBoard::mirror)
-                .beginValue("ruleLifeGameNew", SHORT, (short) 8)
+                .beginValue("ruleLifeGameNew", INTEGER, 8)
                 .withComment(desc_ruleLifeGameNew).finishValue(cfg_ruleLifeGameNew::mirror)
-                .beginValue("ruleLifeGameKeep", SHORT, (short) 12)
+                .beginValue("ruleLifeGameKeep", INTEGER, 12)
                 .withComment(desc_ruleLifeGameKeep).finishValue(cfg_ruleLifeGameKeep::mirror)
-                .finishBranch()
-
-                .fork("Entropinnyum")
+                .finishBranch();
+        builder.fork("Entropinnyum")
                 .beginValue("skipEntropinnyumDuperCheck", BOOLEAN, true)
                 .withComment(desc_skipEntropinnyumDuperCheck).finishValue(cfg_skipEntropinnyumDuperCheck::mirror)
                 .beginValue("enableEntropinnyumUnderwater", BOOLEAN, true)
                 .withComment(desc_enableEntropinnyumUnderwater).finishValue(cfg_enableEntropinnyumUnderwater::mirror)
-                .finishBranch()
-
-                .fork("Narslimmus")
+                .finishBranch();
+        builder.fork("Narslimmus")
                 .beginValue("skipNarslimmusNaturalCheck", BOOLEAN, true)
                 .withComment(desc_skipNarslimmusNaturalCheck).finishValue(cfg_skipNarslimmusNaturalCheck::mirror)
-                .finishBranch()
-                
-                .fork("Exoflame")
+                .finishBranch();
+        builder.fork("Exoflame")
                 .beginValue("heatsBlazeBurner", BOOLEAN, true)
                 .withComment(desc_heatsBlazeBurner).finishValue(cfg_heatsBlazeBurner::mirror)
-                .finishBranch()
-
+                .finishBranch();
+        builder.fork("ManaPylonPump")
+                .beginValue("enablesManaPylonPump", BOOLEAN, true)
+                .withComment(desc_enablesManaPylonPump).finishValue(cfg_enablesManaPylonPump::mirror)
+                .beginValue("pylonPumpMaxRange", INTEGER, 32)
+                .withComment(desc_pylonPumpMaxRange).finishValue(cfg_pylonPumpMaxRange::mirror)
+                .beginValue("pylonPumpSpeed", INTEGER, 10000)
+                .withComment(desc_pylonPumpSpeed).finishValue(cfg_pylonPumpSpeed::mirror)
+                .beginValue("pylonPumpLossRatio", DOUBLE, 0.1)
+                .withComment(desc_pylonPumpLossRatio).finishValue(cfg_pylonPumpLossRatio::mirror)
+                .beginValue("enablesPylonPumpFx", BOOLEAN, true)
+                .withComment(desc_enablesPylonPumpFx).finishValue(cfg_enablesPylonPumpFx::mirror)
                 .finishBranch();
         return builder.build();
     }
