@@ -8,12 +8,14 @@ import net.minecraft.nbt.*;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,6 +24,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import vazkii.botania.api.block.WandBindable;
 import vazkii.botania.api.mana.ManaPool;
+import vazkii.botania.client.fx.WispParticleData;
+import vazkii.botania.common.block.PylonBlock;
 import vazkii.botania.common.block.block_entity.PylonBlockEntity;
 import vazkii.botania.common.helper.MathHelper;
 
@@ -84,6 +88,9 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
     public ManaPool getBoundTarget() {
         return getBoundTargetAt(bindPos);
     }
+    public Vec3 getBoundCenter() {
+        return bindPos.getCenter();
+    }
 
     // pump tick mixin
     @Inject(method = "commonTick", at = @At("RETURN"), remap = false)
@@ -92,7 +99,7 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
         if (!BotaniaOPConfig.enablesManaPylonPump()) return;
         var srcBE = level.getBlockEntity(worldPosition.below());
         if (!(srcBE instanceof ManaPool srcPool)) return;
-        var targetPool = PylonPumpExt.class.cast(self).getBoundTarget();
+        var targetPool = ((PylonPumpExt) self).getBoundTarget();
         if (targetPool == null) return;
 
         // do pump
@@ -105,7 +112,18 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
 
         // client fx
         if (level.isClientSide && extractAmount > 0 && BotaniaOPConfig.enablesPylonPumpFx()) {
-            // TODO
+            var variant = ((PylonBlock) state.getBlock()).variant;
+            var start = worldPosition.getCenter();
+            var end = ((PylonPumpExt) self).getBoundCenter();
+            var dir = end.subtract(start).normalize().scale(0.5);
+            start = start.add(dir);
+            end = end.subtract(dir);
+            for (var i = 0; i < BotaniaOPConfig.pylonPumpFxStrength(); i++) {
+                var particle = WispParticleData.wisp((float) Math.random() / 3.0F, variant.r, variant.g, variant.b, 0.5f).withNoClip(true);
+                var mid = Math.random();
+                var speed = Math.random() * 0.2;
+                level.addParticle(particle, Mth.lerp(mid, start.x, end.x), Mth.lerp(mid, start.y, end.y), Mth.lerp(mid, start.z, end.z), speed * dir.x, speed * dir.y, speed * dir.z);
+            }
         }
     }
 }

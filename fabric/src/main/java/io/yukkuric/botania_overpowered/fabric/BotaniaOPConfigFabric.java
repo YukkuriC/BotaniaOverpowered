@@ -29,6 +29,7 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Integer> cfg_pylonPumpSpeed = PropertyMirror.create(INTEGER);
     public final PropertyMirror<Double> cfg_pylonPumpLossRatio = PropertyMirror.create(DOUBLE);
     public final PropertyMirror<Boolean> cfg_enablesPylonPumpFx = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Integer> cfg_pylonPumpFxStrength = PropertyMirror.create(INTEGER);
     public boolean showManaAmount() {
         return cfg_showManaAmount.getValue();
     }
@@ -67,6 +68,9 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     }
     public boolean enablesPylonPumpFx() {
         return cfg_enablesPylonPumpFx.getValue();
+    }
+    public int pylonPumpFxStrength() {
+        return cfg_pylonPumpFxStrength.getValue();
     }
 
     public ConfigTree build(ConfigTreeBuilder builder) {
@@ -107,6 +111,8 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
                 .withComment(desc_pylonPumpLossRatio).finishValue(cfg_pylonPumpLossRatio::mirror)
                 .beginValue("enablesPylonPumpFx", BOOLEAN, true)
                 .withComment(desc_enablesPylonPumpFx).finishValue(cfg_enablesPylonPumpFx::mirror)
+                .beginValue("pylonPumpFxStrength", INTEGER, 3)
+                .withComment(desc_pylonPumpFxStrength).finishValue(cfg_pylonPumpFxStrength::mirror)
                 .finishBranch();
         return builder.build();
     }

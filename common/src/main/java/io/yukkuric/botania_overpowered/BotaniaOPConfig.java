@@ -44,6 +44,9 @@ public class BotaniaOPConfig {
     public static boolean enablesPylonPumpFx() {
         return CFG.enablesPylonPumpFx();
     }
+    public static int pylonPumpFxStrength() {
+        return CFG.pylonPumpFxStrength();
+    }
     public interface CommonAccess {
         String desc_showManaAmount = "displays the EVIL numbers";
         String desc_skipDandelifeonClearBoard = "no longer wipe all cells out when consuming";
@@ -58,6 +61,7 @@ public class BotaniaOPConfig {
         String desc_pylonPumpSpeed = "how many mana points will be extracted each tick (for reference, each spark pair has speed of 1000)";
         String desc_pylonPumpLossRatio = "how much ratio of mana will vanish during the transport";
         String desc_enablesPylonPumpFx = "displays extra particles when the pylon pump works";
+        String desc_pylonPumpFxStrength = "how thick the pump particle line will be";
         boolean showManaAmount();
         boolean skipDandelifeonClearBoard();
         int ruleLifeGameNew();
@@ -71,5 +75,6 @@ public class BotaniaOPConfig {
         int pylonPumpSpeed();
         double pylonPumpLossRatio();
         boolean enablesPylonPumpFx();
+        int pylonPumpFxStrength();
     }
 }

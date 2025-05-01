@@ -77,6 +77,12 @@
   name: enablesPylonPumpFx
   side: common
   type: boolean
+- category: ManaPylonPump
+  default: 3, 1, 10
+  descrip: how thick the pump particle line will be
+  name: pylonPumpFxStrength
+  side: common
+  type: int
 - category: Interop
   default: 1, 0, 1e10
   descrip: how many mana points each FE point equals
