@@ -51,8 +51,11 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public boolean enablesPylonPumpFx() {
         return cfg_enablesPylonPumpFx.get();
     }
+    public int pylonPumpFxStrength() {
+        return cfg_pylonPumpFxStrength.get();
+    }
     public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner, cfg_enablesManaPylonPump, cfg_enablesPylonPumpFx;
-    public ForgeConfigSpec.IntValue cfg_ruleLifeGameNew, cfg_ruleLifeGameKeep, cfg_pylonPumpMaxRange, cfg_pylonPumpSpeed;
+    public ForgeConfigSpec.IntValue cfg_ruleLifeGameNew, cfg_ruleLifeGameKeep, cfg_pylonPumpMaxRange, cfg_pylonPumpSpeed, cfg_pylonPumpFxStrength;
     public ForgeConfigSpec.DoubleValue cfg_pylonPumpLossRatio, cfg_MekasuitConversionRatio;
 
     public BotaniaOPConfigForge(ForgeConfigSpec.Builder builder) {
@@ -85,6 +88,7 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
         cfg_pylonPumpSpeed = builder.comment(desc_pylonPumpSpeed).defineInRange("pylonPumpSpeed", 10000, 1, Integer.MAX_VALUE);
         cfg_pylonPumpLossRatio = builder.comment(desc_pylonPumpLossRatio).defineInRange("pylonPumpLossRatio", 0.1, 0, 1);
         cfg_enablesPylonPumpFx = builder.comment(desc_enablesPylonPumpFx).define("enablesPylonPumpFx", true);
+        cfg_pylonPumpFxStrength = builder.comment(desc_pylonPumpFxStrength).defineInRange("pylonPumpFxStrength", 3, 1, 10);
         builder.pop();
 
         builder.push("Interop");
