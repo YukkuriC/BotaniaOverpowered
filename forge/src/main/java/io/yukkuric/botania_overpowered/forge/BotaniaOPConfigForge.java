@@ -84,7 +84,7 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
 
         builder.push("ManaPylonPump");
         cfg_enablesManaPylonPump = builder.comment(desc_enablesManaPylonPump).define("enablesManaPylonPump", true);
-        cfg_pylonPumpMaxRange = builder.comment(desc_pylonPumpMaxRange).defineInRange("pylonPumpMaxRange", 32, 1, 256);
+        cfg_pylonPumpMaxRange = builder.comment(desc_pylonPumpMaxRange).defineInRange("pylonPumpMaxRange", 64, 1, 256);
         cfg_pylonPumpSpeed = builder.comment(desc_pylonPumpSpeed).defineInRange("pylonPumpSpeed", 10000, 1, Integer.MAX_VALUE);
         cfg_pylonPumpLossRatio = builder.comment(desc_pylonPumpLossRatio).defineInRange("pylonPumpLossRatio", 0.1, 0, 1);
         cfg_enablesPylonPumpFx = builder.comment(desc_enablesPylonPumpFx).define("enablesPylonPumpFx", true);

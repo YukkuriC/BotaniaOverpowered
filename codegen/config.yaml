@@ -54,7 +54,7 @@
   side: common
   type: boolean
 - category: ManaPylonPump
-  default: 32, 1, 256
+  default: 64, 1, 256
   descrip: max distance between the pylon and the pool bound
   name: pylonPumpMaxRange
   side: common

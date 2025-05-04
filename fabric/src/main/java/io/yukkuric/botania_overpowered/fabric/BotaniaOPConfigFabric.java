@@ -103,7 +103,7 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
         builder.fork("ManaPylonPump")
                 .beginValue("enablesManaPylonPump", BOOLEAN, true)
                 .withComment(desc_enablesManaPylonPump).finishValue(cfg_enablesManaPylonPump::mirror)
-                .beginValue("pylonPumpMaxRange", INTEGER, 32)
+                .beginValue("pylonPumpMaxRange", INTEGER, 64)
                 .withComment(desc_pylonPumpMaxRange).finishValue(cfg_pylonPumpMaxRange::mirror)
                 .beginValue("pylonPumpSpeed", INTEGER, 10000)
                 .withComment(desc_pylonPumpSpeed).finishValue(cfg_pylonPumpSpeed::mirror)
