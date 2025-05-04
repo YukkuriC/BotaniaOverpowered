@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import vazkii.botania.api.block.WandBindable;
-import vazkii.botania.api.mana.ManaPool;
+import vazkii.botania.api.mana.ManaReceiver;
 import vazkii.botania.client.fx.WispParticleData;
 import vazkii.botania.common.block.PylonBlock;
 import vazkii.botania.common.block.block_entity.PylonBlockEntity;
@@ -44,7 +44,7 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
     }
     public boolean bindTo(Player foo, ItemStack bar, BlockPos newPos, Direction baz) {
         if (!BotaniaOPConfig.enablesManaPylonPump()) return false;
-        if (!isValidBindingPos(newPos)) newPos = null;
+        if (!isValidBindingPos(newPos) || worldPosition.below().equals(newPos)) newPos = null;
         if (!Objects.equals(newPos, bindPos)) {
             bindPos = newPos;
             setChanged();
@@ -79,13 +79,13 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
     }
 
     // PylonPumpExt, no cfg check
-    private ManaPool getBoundTargetAt(BlockPos target) {
+    private ManaReceiver getBoundTargetAt(BlockPos target) {
         if (target == null || level == null) return null;
         var be = level.getBlockEntity(target);
-        if (!(be instanceof ManaPool pool)) return null;
+        if (!(be instanceof ManaReceiver pool)) return null;
         return pool;
     }
-    public ManaPool getBoundTarget() {
+    public ManaReceiver getBoundTarget() {
         return getBoundTargetAt(bindPos);
     }
     public Vec3 getBoundCenter() {
@@ -98,14 +98,14 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
         // ensure connection
         if (!BotaniaOPConfig.enablesManaPylonPump()) return;
         var srcBE = level.getBlockEntity(worldPosition.below());
-        if (!(srcBE instanceof ManaPool srcPool)) return;
+        if (!(srcBE instanceof ManaReceiver srcPool)) return;
         var targetPool = ((PylonPumpExt) self).getBoundTarget();
-        if (targetPool == null) return;
+        if (targetPool == null || targetPool.isFull()) return;
 
         // do pump
         var extractAmount = BotaniaOPConfig.pylonPumpSpeed();
         extractAmount = Math.min(extractAmount, srcPool.getCurrentMana());
-        extractAmount = Math.min(extractAmount, targetPool.getMaxMana() - targetPool.getCurrentMana());
+//        extractAmount = Math.min(extractAmount, targetPool.getMaxMana() - targetPool.getCurrentMana()); // 1 tick loss is acceptable
         int reachedAmount = (int) Math.round(extractAmount * (1 - BotaniaOPConfig.pylonPumpLossRatio()));
         srcPool.receiveMana(-extractAmount);
         targetPool.receiveMana(reachedAmount);
