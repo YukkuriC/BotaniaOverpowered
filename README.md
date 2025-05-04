@@ -27,8 +27,8 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
 -   Narslimmus changes
     -   ignores slime chunk restrictions and accepts ALL slimes, including ones from cages/eggs/split, magma cubes, (theoretically) TConstruct varieties, etc.
 -   Mana Pylon Pump
-    -   places on a mana pool, binds to another mana pool with _Wand of the Forest_, then the mana transport begins
-    -   configurable speed, max distance & loss ratio
+    -   places on a mana receiver (pool, spreader, etc.), binds to another mana receiver with _Wand of the Forest_, then the mana transport begins
+    -   configurable speed, max distance, loss ratio & particle fx
 -   Exoflame changes (Create compat)
     -   lights up Blaze Burner blocks nearby, if they have valid working blocks above
 -   Misc features
