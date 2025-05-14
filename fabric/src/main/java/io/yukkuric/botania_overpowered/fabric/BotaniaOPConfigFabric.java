@@ -30,6 +30,7 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Double> cfg_pylonPumpLossRatio = PropertyMirror.create(DOUBLE);
     public final PropertyMirror<Boolean> cfg_enablesPylonPumpFx = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Integer> cfg_pylonPumpFxStrength = PropertyMirror.create(INTEGER);
+    public final PropertyMirror<Boolean> cfg_enablesPassiveThermalily = PropertyMirror.create(BOOLEAN);
     public boolean showManaAmount() {
         return cfg_showManaAmount.getValue();
     }
@@ -72,6 +73,9 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public int pylonPumpFxStrength() {
         return cfg_pylonPumpFxStrength.getValue();
     }
+    public boolean enablesPassiveThermalily() {
+        return cfg_enablesPassiveThermalily.getValue();
+    }
 
     public ConfigTree build(ConfigTreeBuilder builder) {
         builder.fork("Display")
@@ -113,6 +117,10 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
                 .withComment(desc_enablesPylonPumpFx).finishValue(cfg_enablesPylonPumpFx::mirror)
                 .beginValue("pylonPumpFxStrength", INTEGER, 3)
                 .withComment(desc_pylonPumpFxStrength).finishValue(cfg_pylonPumpFxStrength::mirror)
+                .finishBranch();
+        builder.fork("Thermalily")
+                .beginValue("enablesPassiveThermalily", BOOLEAN, true)
+                .withComment(desc_enablesPassiveThermalily).finishValue(cfg_enablesPassiveThermalily::mirror)
                 .finishBranch();
         return builder.build();
     }
