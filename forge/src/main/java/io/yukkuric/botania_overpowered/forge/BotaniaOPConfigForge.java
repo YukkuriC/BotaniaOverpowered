@@ -54,7 +54,10 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public int pylonPumpFxStrength() {
         return cfg_pylonPumpFxStrength.get();
     }
-    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner, cfg_enablesManaPylonPump, cfg_enablesPylonPumpFx;
+    public boolean enablesPassiveThermalily() {
+        return cfg_enablesPassiveThermalily.get();
+    }
+    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner, cfg_enablesManaPylonPump, cfg_enablesPylonPumpFx, cfg_enablesPassiveThermalily;
     public ForgeConfigSpec.IntValue cfg_ruleLifeGameNew, cfg_ruleLifeGameKeep, cfg_pylonPumpMaxRange, cfg_pylonPumpSpeed, cfg_pylonPumpFxStrength;
     public ForgeConfigSpec.DoubleValue cfg_pylonPumpLossRatio, cfg_MekasuitConversionRatio;
 
@@ -89,6 +92,10 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
         cfg_pylonPumpLossRatio = builder.comment(desc_pylonPumpLossRatio).defineInRange("pylonPumpLossRatio", 0.1, 0, 1);
         cfg_enablesPylonPumpFx = builder.comment(desc_enablesPylonPumpFx).define("enablesPylonPumpFx", true);
         cfg_pylonPumpFxStrength = builder.comment(desc_pylonPumpFxStrength).defineInRange("pylonPumpFxStrength", 3, 1, 10);
+        builder.pop();
+
+        builder.push("Thermalily");
+        cfg_enablesPassiveThermalily = builder.comment(desc_enablesPassiveThermalily).define("enablesPassiveThermalily", true);
         builder.pop();
 
         builder.push("Interop");

@@ -5,7 +5,7 @@
 
 An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancements / un-nerfs which are kind of overpowered.
 
-## Features
+## Features (every entry can be toggled off in config file)
 
 -   Dandelifeon changes
     -   consuming center cells no longer destroys outer cells
@@ -31,6 +31,8 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   configurable speed, max distance, loss ratio & particle fx
 -   Exoflame changes (Create compat)
     -   lights up Blaze Burner blocks nearby, if they have valid working blocks above
+-   Thermalily changes
+    -   no longer consumes lava during its cooldown
 -   Misc features
     -   Displays the _`Evil`_ numbers inside tablets
     -   Forge exclusive: MekaSuit from Mekanism as mana provider

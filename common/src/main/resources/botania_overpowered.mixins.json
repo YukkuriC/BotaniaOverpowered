@@ -11,7 +11,8 @@
     "MixinDandelifeon$ITable",
     "MixinEntropinnyum",
     "MixinNarslimmus",
-    "MixinPylonPump"
+    "MixinPylonPump",
+    "MixinThermalily"
   ],
   "injectors": {
     "defaultRequire": 1

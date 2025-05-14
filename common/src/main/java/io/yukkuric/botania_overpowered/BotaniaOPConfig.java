@@ -47,6 +47,9 @@ public class BotaniaOPConfig {
     public static int pylonPumpFxStrength() {
         return CFG.pylonPumpFxStrength();
     }
+    public static boolean enablesPassiveThermalily() {
+        return CFG.enablesPassiveThermalily();
+    }
     public interface CommonAccess {
         String desc_showManaAmount = "displays the EVIL numbers";
         String desc_skipDandelifeonClearBoard = "no longer wipe all cells out when consuming";
@@ -62,6 +65,7 @@ public class BotaniaOPConfig {
         String desc_pylonPumpLossRatio = "how much ratio of mana will vanish during the transport";
         String desc_enablesPylonPumpFx = "displays extra particles when the pylon pump works";
         String desc_pylonPumpFxStrength = "how thick the pump particle line will be";
+        String desc_enablesPassiveThermalily = "no longer consumes lava during its cooldown";
         boolean showManaAmount();
         boolean skipDandelifeonClearBoard();
         int ruleLifeGameNew();
@@ -76,5 +80,6 @@ public class BotaniaOPConfig {
         double pylonPumpLossRatio();
         boolean enablesPylonPumpFx();
         int pylonPumpFxStrength();
+        boolean enablesPassiveThermalily();
     }
 }

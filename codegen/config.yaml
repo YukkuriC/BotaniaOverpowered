@@ -83,6 +83,12 @@
   name: pylonPumpFxStrength
   side: common
   type: int
+- category: Thermalily
+  default: 'true'
+  descrip: no longer consumes lava during its cooldown
+  name: enablesPassiveThermalily
+  side: common
+  type: boolean
 - category: Interop
   default: 1, 0, 1e10
   descrip: how many mana points each FE point equals
