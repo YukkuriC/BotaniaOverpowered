@@ -105,10 +105,14 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
         // do pump
         var extractAmount = BotaniaOPConfig.pylonPumpSpeed();
         extractAmount = Math.min(extractAmount, srcPool.getCurrentMana());
-//        extractAmount = Math.min(extractAmount, targetPool.getMaxMana() - targetPool.getCurrentMana()); // 1 tick loss is acceptable
         int reachedAmount = (int) Math.round(extractAmount * (1 - BotaniaOPConfig.pylonPumpLossRatio()));
-        srcPool.receiveMana(-extractAmount);
+        if (reachedAmount <= 0) return;
+        var oldMana = targetPool.getCurrentMana();
         targetPool.receiveMana(reachedAmount);
+        var reachedReal = targetPool.getCurrentMana() - oldMana;
+        if (reachedReal != reachedAmount)
+            extractAmount = Math.round((float) extractAmount * reachedReal / (float) reachedAmount);
+        srcPool.receiveMana(-extractAmount);
 
         // client fx
         if (level.isClientSide && extractAmount > 0 && BotaniaOPConfig.enablesPylonPumpFx()) {
