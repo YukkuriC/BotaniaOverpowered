@@ -29,6 +29,7 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
 -   Mana Pylon Pump
     -   places on a mana receiver (pool, spreader, etc.), binds to another mana receiver with _Wand of the Forest_, then the mana transport begins
     -   configurable speed, max distance, loss ratio & particle fx
+    -   now supports vertical stacking, letting multiple pylon drain from single target at the same time
 -   Exoflame changes (Create compat)
     -   lights up Blaze Burner blocks nearby, if they have valid working blocks above
 -   Thermalily changes

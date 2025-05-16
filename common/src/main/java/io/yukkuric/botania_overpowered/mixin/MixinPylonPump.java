@@ -19,6 +19,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -33,6 +34,8 @@ import java.util.Objects;
 
 @Mixin(PylonBlockEntity.class)
 public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPumpExt {
+    @Shadow(remap = false)
+    private int ticks;
     public MixinPylonPump(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
@@ -79,6 +82,7 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
     }
 
     // PylonPumpExt, no cfg check
+    private BlockPos cachedPos;
     private ManaReceiver getBoundTargetAt(BlockPos target) {
         if (target == null || level == null) return null;
         var be = level.getBlockEntity(target);
@@ -87,6 +91,30 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
     }
     public ManaReceiver getBoundTarget() {
         return getBoundTargetAt(bindPos);
+    }
+    public ManaReceiver getSource() {
+        if (level == null) return null;
+        // periodically refresh pool query
+        if (cachedPos == null || ticks % 20 == 0) {
+            var ptr = worldPosition.below().mutable();
+            var py = ptr.getY();
+            while (level.isInWorldBounds(ptr)) {
+                var be = level.getBlockEntity(ptr);
+                // got target
+                if (be instanceof ManaReceiver target) {
+                    cachedPos = ptr.immutable();
+                    return target;
+                }
+                // only supports pylon tower
+                else if (!(be instanceof PylonBlockEntity)) break;
+                py--;
+                ptr.setY(py);
+            }
+            cachedPos = worldPosition;
+            return null;
+        }
+        var be = level.getBlockEntity(cachedPos);
+        return be instanceof ManaReceiver target ? target : null;
     }
     public Vec3 getBoundCenter() {
         return Vec3.atCenterOf(bindPos);
@@ -97,8 +125,8 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
     private static void tickPump(Level level, BlockPos worldPosition, BlockState state, PylonBlockEntity self, CallbackInfo ci) {
         // ensure connection
         if (!BotaniaOPConfig.enablesManaPylonPump()) return;
-        var srcBE = level.getBlockEntity(worldPosition.below());
-        if (!(srcBE instanceof ManaReceiver srcPool)) return;
+        var srcPool = ((PylonPumpExt) self).getSource();
+        if (srcPool == null) return;
         var targetPool = ((PylonPumpExt) self).getBoundTarget();
         if (targetPool == null || targetPool.isFull()) return;
 
@@ -111,7 +139,7 @@ public class MixinPylonPump extends BlockEntity implements WandBindable, PylonPu
         targetPool.receiveMana(reachedAmount);
         var reachedReal = targetPool.getCurrentMana() - oldMana;
         if (reachedReal != reachedAmount)
-            extractAmount = Math.round((float) extractAmount * reachedReal / (float) reachedAmount);
+            extractAmount = (int) Math.ceil((float) extractAmount * reachedReal / (float) reachedAmount);
         srcPool.receiveMana(-extractAmount);
 
         // client fx
