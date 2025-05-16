@@ -5,5 +5,6 @@ import vazkii.botania.api.mana.ManaReceiver;
 
 public interface PylonPumpExt {
     ManaReceiver getBoundTarget();
+    ManaReceiver getSource();
     Vec3 getBoundCenter();
 }
