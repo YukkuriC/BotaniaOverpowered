@@ -1,7 +1,5 @@
 package io.yukkuric.botania_overpowered.mixin.enchanter;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import io.yukkuric.botania_overpowered.BotaniaOPConfig;
 import net.minecraft.core.BlockPos;
@@ -10,6 +8,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.*;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -50,12 +49,12 @@ public abstract class MixinEnchanterBE extends BlockEntity {
             cir.setReturnValue(true);
         }
     }
-    @WrapOperation(method = "commonTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;enchant(Lnet/minecraft/world/item/enchantment/Enchantment;I)V"))
-    private static void bookEnchantWrap(ItemStack instance, Enchantment enchantment, int level, Operation<Void> original, @Local(argsOnly = true) ManaEnchanterBlockEntity self) {
-        original.call(instance, enchantment, level);
-        if (BotaniaOPConfig.enchantBooks() && instance.is(Items.BOOK)) {
+    @Inject(method = "commonTick", at = @At(value = "INVOKE", target = "Ljava/util/List;clear()V"))
+    private static void bookEnchantWrap(Level level, BlockPos worldPosition, BlockState state, ManaEnchanterBlockEntity self, CallbackInfo ci) {
+        if (BotaniaOPConfig.enchantBooks() && self.itemToEnchant.is(Items.BOOK)) {
+            var oldItem = self.itemToEnchant;
             self.itemToEnchant = new ItemStack(Items.ENCHANTED_BOOK, 1);
-            self.itemToEnchant.getOrCreateTag().put("StoredEnchantments", instance.getOrCreateTag().get("Enchantments"));
+            self.itemToEnchant.getOrCreateTag().put("StoredEnchantments", oldItem.getOrCreateTag().get("Enchantments"));
         }
     }
 
