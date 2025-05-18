@@ -50,6 +50,15 @@ public class BotaniaOPConfig {
     public static boolean enablesPassiveThermalily() {
         return CFG.enablesPassiveThermalily();
     }
+    public static boolean enchantBooks() {
+        return CFG.enchantBooks();
+    }
+    public static boolean acceptsAllInsideBook() {
+        return CFG.acceptsAllInsideBook();
+    }
+    public static boolean ignoresCompatibleCheck() {
+        return CFG.ignoresCompatibleCheck();
+    }
     public interface CommonAccess {
         String desc_showManaAmount = "displays the EVIL numbers";
         String desc_skipDandelifeonClearBoard = "no longer wipe all cells out when consuming";
@@ -66,6 +75,9 @@ public class BotaniaOPConfig {
         String desc_enablesPylonPumpFx = "displays extra particles when the pylon pump works";
         String desc_pylonPumpFxStrength = "how thick the pump particle line will be";
         String desc_enablesPassiveThermalily = "no longer consumes lava during its cooldown";
+        String desc_enchantBooks = "may enchant books as enchantment table does";
+        String desc_acceptsAllInsideBook = "all available enchantments will be accepted, not onlt the first";
+        String desc_ignoresCompatibleCheck = "accepts conflicted enchantments (for example, infinity & mending)";
         boolean showManaAmount();
         boolean skipDandelifeonClearBoard();
         int ruleLifeGameNew();
@@ -81,5 +93,8 @@ public class BotaniaOPConfig {
         boolean enablesPylonPumpFx();
         int pylonPumpFxStrength();
         boolean enablesPassiveThermalily();
+        boolean enchantBooks();
+        boolean acceptsAllInsideBook();
+        boolean ignoresCompatibleCheck();
     }
 }

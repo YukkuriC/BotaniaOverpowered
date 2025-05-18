@@ -34,6 +34,10 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   lights up Blaze Burner blocks nearby, if they have valid working blocks above
 -   Thermalily changes
     -   no longer consumes lava during its cooldown
+-   Mana Enchanter changes
+    -   can create enchanted books from books
+    -   accepts all enchantments rather than the first from provided enchanted books
+    -   can create conflicted enchantments (like infinity & mending)
 -   Misc features
     -   Displays the _`Evil`_ numbers inside tablets
     -   Forge exclusive: MekaSuit from Mekanism as mana provider
