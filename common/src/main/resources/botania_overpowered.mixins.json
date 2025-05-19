@@ -12,7 +12,9 @@
     "MixinEntropinnyum",
     "MixinNarslimmus",
     "MixinPylonPump",
-    "MixinThermalily"
+    "MixinThermalily",
+    "enchanter.MixinEnchanterBE",
+    "enchanter.MixinEnchanterBlock"
   ],
   "injectors": {
     "defaultRequire": 1

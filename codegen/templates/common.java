@@ -8,6 +8,7 @@ public class BotaniaOPConfig {
     }
 
     {%- for line in data_common %}
+    /// <b>{{line.category}}</b><br>{{line.descrip}}
     public static {{line.type}} {{line.name}}() {
         return CFG.{{line.name}}();
     }

@@ -89,6 +89,24 @@
   name: enablesPassiveThermalily
   side: common
   type: boolean
+- category: ManaEnchanter
+  default: 'true'
+  descrip: may enchant books as enchantment table does
+  name: enchantBooks
+  side: common
+  type: boolean
+- category: ManaEnchanter
+  default: 'true'
+  descrip: all available enchantments will be accepted, not onlt the first
+  name: acceptsAllInsideBook
+  side: common
+  type: boolean
+- category: ManaEnchanter
+  default: 'true'
+  descrip: accepts conflicted enchantments (for example, infinity & mending)
+  name: ignoresCompatibleCheck
+  side: common
+  type: boolean
 - category: Interop
   default: 1, 0, 1e10
   descrip: how many mana points each FE point equals
