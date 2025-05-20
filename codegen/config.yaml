@@ -49,7 +49,7 @@
 - category: ManaPylonPump
   default: 'true'
   descrip: makes Mana Pylons extract mana from the pool below and dump to wand-bound
-    mana pool
+      mana pool
   name: enablesManaPylonPump
   side: common
   type: boolean
@@ -93,6 +93,12 @@
   default: 'true'
   descrip: may enchant books as enchantment table does
   name: enchantBooks
+  side: common
+  type: boolean
+- category: ManaEnchanter
+  default: 'true'
+  descrip: item enchantments are valid sources too
+  name: treatEnchantedItemAsBook
   side: common
   type: boolean
 - category: ManaEnchanter

@@ -69,6 +69,10 @@ public class BotaniaOPConfig {
     public static boolean enchantBooks() {
         return CFG.enchantBooks();
     }
+    /// <b>ManaEnchanter</b><br>item enchantments are valid sources too
+    public static boolean treatEnchantedItemAsBook() {
+        return CFG.treatEnchantedItemAsBook();
+    }
     /// <b>ManaEnchanter</b><br>all available enchantments will be accepted, not onlt the first
     public static boolean acceptsAllInsideBook() {
         return CFG.acceptsAllInsideBook();
@@ -94,6 +98,7 @@ public class BotaniaOPConfig {
         String desc_pylonPumpFxStrength = "how thick the pump particle line will be";
         String desc_enablesPassiveThermalily = "no longer consumes lava during its cooldown";
         String desc_enchantBooks = "may enchant books as enchantment table does";
+        String desc_treatEnchantedItemAsBook = "item enchantments are valid sources too";
         String desc_acceptsAllInsideBook = "all available enchantments will be accepted, not onlt the first";
         String desc_ignoresCompatibleCheck = "accepts conflicted enchantments (for example, infinity & mending)";
         boolean showManaAmount();
@@ -112,6 +117,7 @@ public class BotaniaOPConfig {
         int pylonPumpFxStrength();
         boolean enablesPassiveThermalily();
         boolean enchantBooks();
+        boolean treatEnchantedItemAsBook();
         boolean acceptsAllInsideBook();
         boolean ignoresCompatibleCheck();
     }

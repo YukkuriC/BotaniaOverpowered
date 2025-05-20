@@ -60,13 +60,16 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public boolean enchantBooks() {
         return cfg_enchantBooks.get();
     }
+    public boolean treatEnchantedItemAsBook() {
+        return cfg_treatEnchantedItemAsBook.get();
+    }
     public boolean acceptsAllInsideBook() {
         return cfg_acceptsAllInsideBook.get();
     }
     public boolean ignoresCompatibleCheck() {
         return cfg_ignoresCompatibleCheck.get();
     }
-    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner, cfg_enablesManaPylonPump, cfg_enablesPylonPumpFx, cfg_enablesPassiveThermalily, cfg_enchantBooks, cfg_acceptsAllInsideBook, cfg_ignoresCompatibleCheck;
+    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner, cfg_enablesManaPylonPump, cfg_enablesPylonPumpFx, cfg_enablesPassiveThermalily, cfg_enchantBooks, cfg_treatEnchantedItemAsBook, cfg_acceptsAllInsideBook, cfg_ignoresCompatibleCheck;
     public ForgeConfigSpec.IntValue cfg_ruleLifeGameNew, cfg_ruleLifeGameKeep, cfg_pylonPumpMaxRange, cfg_pylonPumpSpeed, cfg_pylonPumpFxStrength;
     public ForgeConfigSpec.DoubleValue cfg_pylonPumpLossRatio, cfg_MekasuitConversionRatio;
 
@@ -109,6 +112,7 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
 
         builder.push("ManaEnchanter");
         cfg_enchantBooks = builder.comment(desc_enchantBooks).define("enchantBooks", true);
+        cfg_treatEnchantedItemAsBook = builder.comment(desc_treatEnchantedItemAsBook).define("treatEnchantedItemAsBook", true);
         cfg_acceptsAllInsideBook = builder.comment(desc_acceptsAllInsideBook).define("acceptsAllInsideBook", true);
         cfg_ignoresCompatibleCheck = builder.comment(desc_ignoresCompatibleCheck).define("ignoresCompatibleCheck", true);
         builder.pop();

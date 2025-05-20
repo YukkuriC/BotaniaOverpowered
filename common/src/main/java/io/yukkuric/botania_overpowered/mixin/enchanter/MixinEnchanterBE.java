@@ -1,5 +1,7 @@
 package io.yukkuric.botania_overpowered.mixin.enchanter;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import io.yukkuric.botania_overpowered.BotaniaOPConfig;
 import net.minecraft.core.BlockPos;
@@ -7,8 +9,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -24,6 +25,7 @@ import vazkii.botania.common.block.block_entity.ManaEnchanterBlockEntity;
 import vazkii.botania.common.handler.BotaniaSounds;
 
 import java.util.List;
+import java.util.Objects;
 
 @Mixin(ManaEnchanterBlockEntity.class)
 public abstract class MixinEnchanterBE extends BlockEntity {
@@ -91,6 +93,12 @@ public abstract class MixinEnchanterBE extends BlockEntity {
         }
 
         ci.cancel();
+    }
+
+    @WrapOperation(method = "gatherEnchants", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
+    boolean everythingIsBook(ItemStack instance, Item item, Operation<Boolean> original) {
+        if (BotaniaOPConfig.treatEnchantedItemAsBook() && Objects.equals(item, Items.ENCHANTED_BOOK)) return true;
+        return original.call(instance, item);
     }
 
     // skip wand use check, I swear nobody could notice this
