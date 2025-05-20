@@ -3,8 +3,10 @@ package io.yukkuric.botania_overpowered.mixin.enchanter;
 import com.llamalad7.mixinextras.sugar.Local;
 import io.yukkuric.botania_overpowered.BotaniaOPConfig;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.*;
@@ -89,5 +91,14 @@ public abstract class MixinEnchanterBE extends BlockEntity {
         }
 
         ci.cancel();
+    }
+
+    // skip wand use check, I swear nobody could notice this
+    @Inject(method = "onUsedByWand", at = @At("HEAD"), remap = false, cancellable = true)
+    void skipWandInitialCheck(Player player, ItemStack wand, Direction side, CallbackInfoReturnable<Boolean> cir) {
+        if (stage == ManaEnchanterBlockEntity.State.IDLE) {
+            this.advanceStage();
+            cir.setReturnValue(true);
+        }
     }
 }
