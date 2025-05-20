@@ -113,6 +113,12 @@
   name: ignoresCompatibleCheck
   side: common
   type: boolean
+- category: ManaEnchanter
+  default: 'true'
+  descrip: splits all enchantments as separate books if enchanter structure breaks after enchantment finished
+  name: doFinalEnchantmentSplit
+  side: common
+  type: boolean
 - category: Interop
   default: 1, 0, 1e10
   descrip: how many mana points each FE point equals

@@ -81,6 +81,10 @@ public class BotaniaOPConfig {
     public static boolean ignoresCompatibleCheck() {
         return CFG.ignoresCompatibleCheck();
     }
+    /// <b>ManaEnchanter</b><br>splits all enchantments as separate books if enchanter structure breaks after enchantment finished
+    public static boolean doFinalEnchantmentSplit() {
+        return CFG.doFinalEnchantmentSplit();
+    }
     public interface CommonAccess {
         String desc_showManaAmount = "displays the EVIL numbers";
         String desc_skipDandelifeonClearBoard = "no longer wipe all cells out when consuming";
@@ -101,6 +105,7 @@ public class BotaniaOPConfig {
         String desc_treatEnchantedItemAsBook = "item enchantments are valid sources too";
         String desc_acceptsAllInsideBook = "all available enchantments will be accepted, not onlt the first";
         String desc_ignoresCompatibleCheck = "accepts conflicted enchantments (for example, infinity & mending)";
+        String desc_doFinalEnchantmentSplit = "splits all enchantments as separate books if enchanter structure breaks after enchantment finished";
         boolean showManaAmount();
         boolean skipDandelifeonClearBoard();
         int ruleLifeGameNew();
@@ -120,5 +125,6 @@ public class BotaniaOPConfig {
         boolean treatEnchantedItemAsBook();
         boolean acceptsAllInsideBook();
         boolean ignoresCompatibleCheck();
+        boolean doFinalEnchantmentSplit();
     }
 }

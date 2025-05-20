@@ -69,7 +69,10 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public boolean ignoresCompatibleCheck() {
         return cfg_ignoresCompatibleCheck.get();
     }
-    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner, cfg_enablesManaPylonPump, cfg_enablesPylonPumpFx, cfg_enablesPassiveThermalily, cfg_enchantBooks, cfg_treatEnchantedItemAsBook, cfg_acceptsAllInsideBook, cfg_ignoresCompatibleCheck;
+    public boolean doFinalEnchantmentSplit() {
+        return cfg_doFinalEnchantmentSplit.get();
+    }
+    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner, cfg_enablesManaPylonPump, cfg_enablesPylonPumpFx, cfg_enablesPassiveThermalily, cfg_enchantBooks, cfg_treatEnchantedItemAsBook, cfg_acceptsAllInsideBook, cfg_ignoresCompatibleCheck, cfg_doFinalEnchantmentSplit;
     public ForgeConfigSpec.IntValue cfg_ruleLifeGameNew, cfg_ruleLifeGameKeep, cfg_pylonPumpMaxRange, cfg_pylonPumpSpeed, cfg_pylonPumpFxStrength;
     public ForgeConfigSpec.DoubleValue cfg_pylonPumpLossRatio, cfg_MekasuitConversionRatio;
 
@@ -115,6 +118,7 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
         cfg_treatEnchantedItemAsBook = builder.comment(desc_treatEnchantedItemAsBook).define("treatEnchantedItemAsBook", true);
         cfg_acceptsAllInsideBook = builder.comment(desc_acceptsAllInsideBook).define("acceptsAllInsideBook", true);
         cfg_ignoresCompatibleCheck = builder.comment(desc_ignoresCompatibleCheck).define("ignoresCompatibleCheck", true);
+        cfg_doFinalEnchantmentSplit = builder.comment(desc_doFinalEnchantmentSplit).define("doFinalEnchantmentSplit", true);
         builder.pop();
 
         builder.push("Interop");

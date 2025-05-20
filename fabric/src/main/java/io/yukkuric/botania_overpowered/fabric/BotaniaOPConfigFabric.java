@@ -35,6 +35,7 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Boolean> cfg_treatEnchantedItemAsBook = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_acceptsAllInsideBook = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_ignoresCompatibleCheck = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_doFinalEnchantmentSplit = PropertyMirror.create(BOOLEAN);
     public boolean showManaAmount() {
         return cfg_showManaAmount.getValue();
     }
@@ -92,6 +93,9 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public boolean ignoresCompatibleCheck() {
         return cfg_ignoresCompatibleCheck.getValue();
     }
+    public boolean doFinalEnchantmentSplit() {
+        return cfg_doFinalEnchantmentSplit.getValue();
+    }
 
     public ConfigTree build(ConfigTreeBuilder builder) {
         builder.fork("Display")
@@ -147,6 +151,8 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
                 .withComment(desc_acceptsAllInsideBook).finishValue(cfg_acceptsAllInsideBook::mirror)
                 .beginValue("ignoresCompatibleCheck", BOOLEAN, true)
                 .withComment(desc_ignoresCompatibleCheck).finishValue(cfg_ignoresCompatibleCheck::mirror)
+                .beginValue("doFinalEnchantmentSplit", BOOLEAN, true)
+                .withComment(desc_doFinalEnchantmentSplit).finishValue(cfg_doFinalEnchantmentSplit::mirror)
                 .finishBranch();
         return builder.build();
     }
