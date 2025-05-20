@@ -119,9 +119,15 @@
   name: doFinalEnchantmentSplit
   side: common
   type: boolean
-- category: Interop
+- category: Interop.Mekanism
   default: 1, 0, 1e10
   descrip: how many mana points each FE point equals
   name: MekasuitConversionRatio
   side: forge
   type: double
+- category: Interop.Mekanism
+  default: 'true'
+  descrip: ... as what Terrasteel Helmet does
+  name: MekasuitHelmetAcceptsAncientWill
+  side: forge
+  type: boolean

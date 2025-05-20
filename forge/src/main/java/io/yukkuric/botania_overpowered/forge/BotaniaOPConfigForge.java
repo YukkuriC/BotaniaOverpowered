@@ -12,6 +12,10 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public static double MekasuitConversionRatio() {
         return INSTANCE.cfg_MekasuitConversionRatio.get();
     }
+    private static final String desc_MekasuitHelmetAcceptsAncientWill = "... as what Terrasteel Helmet does";
+    public static boolean MekasuitHelmetAcceptsAncientWill() {
+        return INSTANCE.cfg_MekasuitHelmetAcceptsAncientWill.get();
+    }
     public boolean showManaAmount() {
         return cfg_showManaAmount.get();
     }
@@ -72,7 +76,7 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public boolean doFinalEnchantmentSplit() {
         return cfg_doFinalEnchantmentSplit.get();
     }
-    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner, cfg_enablesManaPylonPump, cfg_enablesPylonPumpFx, cfg_enablesPassiveThermalily, cfg_enchantBooks, cfg_treatEnchantedItemAsBook, cfg_acceptsAllInsideBook, cfg_ignoresCompatibleCheck, cfg_doFinalEnchantmentSplit;
+    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner, cfg_enablesManaPylonPump, cfg_enablesPylonPumpFx, cfg_enablesPassiveThermalily, cfg_enchantBooks, cfg_treatEnchantedItemAsBook, cfg_acceptsAllInsideBook, cfg_ignoresCompatibleCheck, cfg_doFinalEnchantmentSplit, cfg_MekasuitHelmetAcceptsAncientWill;
     public ForgeConfigSpec.IntValue cfg_ruleLifeGameNew, cfg_ruleLifeGameKeep, cfg_pylonPumpMaxRange, cfg_pylonPumpSpeed, cfg_pylonPumpFxStrength;
     public ForgeConfigSpec.DoubleValue cfg_pylonPumpLossRatio, cfg_MekasuitConversionRatio;
 
@@ -121,8 +125,9 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
         cfg_doFinalEnchantmentSplit = builder.comment(desc_doFinalEnchantmentSplit).define("doFinalEnchantmentSplit", true);
         builder.pop();
 
-        builder.push("Interop");
+        builder.push("Interop.Mekanism");
         cfg_MekasuitConversionRatio = builder.comment(desc_MekasuitConversionRatio).defineInRange("MekasuitConversionRatio", 1, 0, 1e10);
+        cfg_MekasuitHelmetAcceptsAncientWill = builder.comment(desc_MekasuitHelmetAcceptsAncientWill).define("MekasuitHelmetAcceptsAncientWill", true);
         builder.pop();
 
         INSTANCE = this;
