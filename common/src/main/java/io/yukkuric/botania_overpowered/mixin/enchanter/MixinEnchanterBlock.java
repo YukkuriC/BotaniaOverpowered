@@ -51,7 +51,7 @@ public class MixinEnchanterBlock {
         return original.call(instance, item);
     }
 
-    @Inject(method = "onRemove", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/Containers;dropItemStack(Lnet/minecraft/world/level/Level;DDDLnet/minecraft/world/item/ItemStack;)V"), remap = false)
+    @Inject(method = "onRemove", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/Containers;dropItemStack(Lnet/minecraft/world/level/Level;DDDLnet/minecraft/world/item/ItemStack;)V"))
     void finalSplit(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving, CallbackInfo ci, @Local ManaEnchanterBlockEntity enchanter) {
         if (!BotaniaOPConfig.doFinalEnchantmentSplit()) return;
         var isBook = enchanter.itemToEnchant.is(Items.ENCHANTED_BOOK);
