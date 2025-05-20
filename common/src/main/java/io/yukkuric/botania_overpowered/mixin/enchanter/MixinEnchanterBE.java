@@ -95,7 +95,7 @@ public abstract class MixinEnchanterBE extends BlockEntity {
         ci.cancel();
     }
 
-    @WrapOperation(method = "gatherEnchants", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
+    @WrapOperation(method = "gatherEnchants", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"), remap = false)
     boolean everythingIsBook(ItemStack instance, Item item, Operation<Boolean> original) {
         if (BotaniaOPConfig.treatEnchantedItemAsBook() && Objects.equals(item, Items.ENCHANTED_BOOK)) return true;
         return original.call(instance, item);
