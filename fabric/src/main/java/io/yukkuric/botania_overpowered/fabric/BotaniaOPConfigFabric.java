@@ -32,8 +32,10 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Integer> cfg_pylonPumpFxStrength = PropertyMirror.create(INTEGER);
     public final PropertyMirror<Boolean> cfg_enablesPassiveThermalily = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_enchantBooks = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_treatEnchantedItemAsBook = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_acceptsAllInsideBook = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_ignoresCompatibleCheck = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_doFinalEnchantmentSplit = PropertyMirror.create(BOOLEAN);
     public boolean showManaAmount() {
         return cfg_showManaAmount.getValue();
     }
@@ -82,11 +84,17 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public boolean enchantBooks() {
         return cfg_enchantBooks.getValue();
     }
+    public boolean treatEnchantedItemAsBook() {
+        return cfg_treatEnchantedItemAsBook.getValue();
+    }
     public boolean acceptsAllInsideBook() {
         return cfg_acceptsAllInsideBook.getValue();
     }
     public boolean ignoresCompatibleCheck() {
         return cfg_ignoresCompatibleCheck.getValue();
+    }
+    public boolean doFinalEnchantmentSplit() {
+        return cfg_doFinalEnchantmentSplit.getValue();
     }
 
     public ConfigTree build(ConfigTreeBuilder builder) {
@@ -137,10 +145,14 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
         builder.fork("ManaEnchanter")
                 .beginValue("enchantBooks", BOOLEAN, true)
                 .withComment(desc_enchantBooks).finishValue(cfg_enchantBooks::mirror)
+                .beginValue("treatEnchantedItemAsBook", BOOLEAN, true)
+                .withComment(desc_treatEnchantedItemAsBook).finishValue(cfg_treatEnchantedItemAsBook::mirror)
                 .beginValue("acceptsAllInsideBook", BOOLEAN, true)
                 .withComment(desc_acceptsAllInsideBook).finishValue(cfg_acceptsAllInsideBook::mirror)
                 .beginValue("ignoresCompatibleCheck", BOOLEAN, true)
                 .withComment(desc_ignoresCompatibleCheck).finishValue(cfg_ignoresCompatibleCheck::mirror)
+                .beginValue("doFinalEnchantmentSplit", BOOLEAN, true)
+                .withComment(desc_doFinalEnchantmentSplit).finishValue(cfg_doFinalEnchantmentSplit::mirror)
                 .finishBranch();
         return builder.build();
     }

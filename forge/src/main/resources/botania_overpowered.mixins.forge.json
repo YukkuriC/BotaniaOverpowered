@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "io.yukkuric.botania_overpowered.forge.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "client": [
+  ],
+  "mixins": [
+    "MixinTerraMekaSuit",
+    "MixinTerraMekaSuit$AncientWillRendererExt",
+    "MixinTerraMekaSuit$TerraHelmHooks"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
