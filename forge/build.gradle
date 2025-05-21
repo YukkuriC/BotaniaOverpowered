@@ -5,6 +5,7 @@ plugins {
 loom {
     forge {
         mixinConfig "botania_overpowered.mixins.json"
+        mixinConfig "botania_overpowered.mixins.forge.json"
     }
 }
 
