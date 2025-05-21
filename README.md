@@ -38,7 +38,9 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   can create enchanted books from books
     -   accepts all enchantments rather than the first from provided enchanted books
     -   can create conflicted enchantments (like infinity & mending)
+-   (Forge exclusive) Mekanism interop:
+    -   MekaSuit as mana provider
+    -   MekaSuit Helmet can be combined with Ancient Will(s)
 -   Misc features
     -   Displays the _`Evil`_ numbers inside tablets
-    -   Forge exclusive: MekaSuit from Mekanism as mana provider
 -   Config for all features above
