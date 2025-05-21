@@ -68,9 +68,10 @@ public abstract class MixinEnchanterBE extends BlockEntity {
         var locatedBookThisTurn = false;
 
         // each book full check
+        var acceptsOnlyBook = !BotaniaOPConfig.treatEnchantedItemAsBook();
         for (var entity : items) {
             var item = entity.getItem();
-            if (!item.is(Items.ENCHANTED_BOOK)) continue;
+            if (acceptsOnlyBook && !item.is(Items.ENCHANTED_BOOK)) continue;
             var enchants = EnchantmentHelper.getEnchantments(item);
             if (enchants.isEmpty()) continue;
             var hasEnchantsThisBook = false;
@@ -97,14 +98,15 @@ public abstract class MixinEnchanterBE extends BlockEntity {
 
     @WrapOperation(method = "gatherEnchants", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
     boolean everythingIsBook(ItemStack instance, Item item, Operation<Boolean> original) {
+        // only when `acceptsAllInsideBook` off
         if (BotaniaOPConfig.treatEnchantedItemAsBook() && Objects.equals(item, Items.ENCHANTED_BOOK)) return true;
         return original.call(instance, item);
     }
 
     // skip wand use check, I swear nobody could notice this
-    @Inject(method = "onUsedByWand", at = @At("HEAD"), remap = false, cancellable = true)
+    @Inject(method = "onUsedByWand", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getEntitiesOfClass(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;"), cancellable = true)
     void skipWandInitialCheck(Player player, ItemStack wand, Direction side, CallbackInfoReturnable<Boolean> cir) {
-        if (stage == ManaEnchanterBlockEntity.State.IDLE) {
+        if (!this.level.isClientSide) {
             this.advanceStage();
             cir.setReturnValue(true);
         }
