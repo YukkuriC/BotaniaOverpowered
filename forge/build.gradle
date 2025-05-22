@@ -5,7 +5,7 @@ plugins {
 loom {
     forge {
         mixinConfig "botania_overpowered.mixins.json"
-        mixinConfig "botania_overpowered.mixins.forge.json"
+        mixinConfig "botania_overpowered.mixins.mekanism.json"
     }
 }
 
@@ -31,9 +31,19 @@ configurations {
     }
 }
 
+repositories {
+    maven { url "https://cursemaven.com" }
+}
+
+var mek_cf_ids = [
+        '1.20.1': 6552911,
+        '1.19.2': 4644795,
+]
+
 dependencies {
     forge "net.minecraftforge:forge:$rootProject.forge_version"
 
+    modImplementation "curse.maven:mekanism-268560:${mek_cf_ids[minecraft_version]}"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionForge')
