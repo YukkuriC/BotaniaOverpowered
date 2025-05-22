@@ -55,7 +55,7 @@ public class MixinTerraMekaSuit extends ArmorItem implements AncientWillContaine
     }
 
     // tooltip
-    @Inject(method = "m_7373_", at = @At("RETURN"), remap = false)
+    @Inject(method = "appendHoverText", at = @At("RETURN"))
     void addTooltipWhenShift(@NotNull ItemStack stack, Level world, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag, CallbackInfo ci) {
         if (!BotaniaOPConfigForge.MekasuitHelmetAcceptsAncientWill() || slot != EquipmentSlot.HEAD || !Screen.hasShiftDown())
             return;
