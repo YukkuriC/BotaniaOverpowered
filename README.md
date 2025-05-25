@@ -45,4 +45,5 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   MekaSuit Helmet can be combined with Ancient Will(s)
 -   Misc features
     -   Displays the _`Evil`_ numbers inside tablets
+    -   Terra Blade beams inherit damage (and fire aspect) from the sword
 -   Config for all features above

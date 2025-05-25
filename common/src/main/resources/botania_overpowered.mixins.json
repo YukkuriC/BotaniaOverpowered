@@ -12,6 +12,7 @@
     "MixinEntropinnyum",
     "MixinNarslimmus",
     "MixinPylonPump",
+    "MixinTerraBlade",
     "MixinThermalily",
     "enchanter.MixinEnchanterBE",
     "enchanter.MixinEnchanterBlock"

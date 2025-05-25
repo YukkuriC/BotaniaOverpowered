@@ -119,6 +119,12 @@
   name: doFinalEnchantmentSplit
   side: common
   type: boolean
+- category: Misc
+  default: 'true'
+  descrip: Terra Blade beams inherit damage (and fire aspect) from the sword
+  name: terraBladeBeamInheritsItemDamage
+  side: common
+  type: boolean
 - category: Interop.Mekanism
   default: 1, 0, 1e10
   descrip: how many mana points each FE point equals
