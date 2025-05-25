@@ -85,6 +85,10 @@ public class BotaniaOPConfig {
     public static boolean doFinalEnchantmentSplit() {
         return CFG.doFinalEnchantmentSplit();
     }
+    /// <b>Misc</b><br>Terra Blade beams inherit damage (and fire aspect) from the sword
+    public static boolean terraBladeBeamInheritsItemDamage() {
+        return CFG.terraBladeBeamInheritsItemDamage();
+    }
     public interface CommonAccess {
         String desc_showManaAmount = "displays the EVIL numbers";
         String desc_skipDandelifeonClearBoard = "no longer wipe all cells out when consuming";
@@ -106,6 +110,7 @@ public class BotaniaOPConfig {
         String desc_acceptsAllInsideBook = "all available enchantments will be accepted, not onlt the first";
         String desc_ignoresCompatibleCheck = "accepts conflicted enchantments (for example, infinity & mending)";
         String desc_doFinalEnchantmentSplit = "splits all enchantments as separate books if enchanter structure breaks after enchantment finished";
+        String desc_terraBladeBeamInheritsItemDamage = "Terra Blade beams inherit damage (and fire aspect) from the sword";
         boolean showManaAmount();
         boolean skipDandelifeonClearBoard();
         int ruleLifeGameNew();
@@ -126,5 +131,6 @@ public class BotaniaOPConfig {
         boolean acceptsAllInsideBook();
         boolean ignoresCompatibleCheck();
         boolean doFinalEnchantmentSplit();
+        boolean terraBladeBeamInheritsItemDamage();
     }
 }

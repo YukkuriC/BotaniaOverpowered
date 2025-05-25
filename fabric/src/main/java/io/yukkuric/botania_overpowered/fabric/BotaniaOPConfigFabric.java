@@ -36,6 +36,7 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Boolean> cfg_acceptsAllInsideBook = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_ignoresCompatibleCheck = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_doFinalEnchantmentSplit = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_terraBladeBeamInheritsItemDamage = PropertyMirror.create(BOOLEAN);
     public boolean showManaAmount() {
         return cfg_showManaAmount.getValue();
     }
@@ -96,6 +97,9 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public boolean doFinalEnchantmentSplit() {
         return cfg_doFinalEnchantmentSplit.getValue();
     }
+    public boolean terraBladeBeamInheritsItemDamage() {
+        return cfg_terraBladeBeamInheritsItemDamage.getValue();
+    }
 
     public ConfigTree build(ConfigTreeBuilder builder) {
         builder.fork("Display")
@@ -153,6 +157,10 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
                 .withComment(desc_ignoresCompatibleCheck).finishValue(cfg_ignoresCompatibleCheck::mirror)
                 .beginValue("doFinalEnchantmentSplit", BOOLEAN, true)
                 .withComment(desc_doFinalEnchantmentSplit).finishValue(cfg_doFinalEnchantmentSplit::mirror)
+                .finishBranch();
+        builder.fork("Misc")
+                .beginValue("terraBladeBeamInheritsItemDamage", BOOLEAN, true)
+                .withComment(desc_terraBladeBeamInheritsItemDamage).finishValue(cfg_terraBladeBeamInheritsItemDamage::mirror)
                 .finishBranch();
         return builder.build();
     }
