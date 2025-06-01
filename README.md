@@ -44,6 +44,7 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   MekaSuit as mana provider
     -   MekaSuit Helmet can be combined with Ancient Will(s)
 -   Misc features
-    -   Displays the _`Evil`_ numbers inside tablets
+    -   Displays the _`Evil`_ mana numbers
+        -   also appear inside the wand HUDs when player crouches
     -   Terra Blade beams inherit damage (and fire aspect) from the sword
 -   Config for all features above
