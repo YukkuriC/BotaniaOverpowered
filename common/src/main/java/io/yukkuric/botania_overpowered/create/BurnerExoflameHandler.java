@@ -1,6 +1,7 @@
 package io.yukkuric.botania_overpowered.create;
 
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlockEntity;
+import io.yukkuric.botania_overpowered.api.BotaniaOPTags;
 import io.yukkuric.botania_overpowered.mixin.BlazeBurnerAccessor;
 import vazkii.botania.api.block.ExoflameHeatable;
 
@@ -14,7 +15,7 @@ public class BurnerExoflameHandler implements ExoflameHeatable {
 
     @Override
     public boolean canSmelt() {
-        return burner.isValidBlockAbove();
+        return burner.isValidBlockAbove() || burner.getLevel().getBlockState(burner.getBlockPos().above()).is(BotaniaOPTags.BLAZEBURNER_TARGET);
     }
     @Override
     public int getBurnTime() {
