@@ -32,6 +32,7 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   now supports vertical stacking, letting multiple pylon drain from single target at the same time
 -   Exoflame changes (Create compat)
     -   lights up Blaze Burner blocks nearby, if they have valid working blocks above
+        -   custom workstation blocks can be added with tag `#botania_overpowered:blazeburner_target` (currently only distillation tank from `Create Diesel Generator`)
 -   Thermalily changes
     -   no longer consumes lava during its cooldown
 -   Mana Enchanter changes
