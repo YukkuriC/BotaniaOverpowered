@@ -32,10 +32,6 @@ public abstract class MixinGaiaGuardian extends Mob {
         super(entityType, level);
     }
 
-    void summonForExtraWaves() {
-
-    }
-
     @WrapOperation(method = {"hurt", "actuallyHurt", "getDamageAfterArmorAbsorb"}, at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(FF)F"))
     float noDamageCap(float num_32, float dmg, Operation<Float> original) {
         if (BotaniaOPConfig.removesDamageCap()) return dmg;
@@ -54,8 +50,7 @@ public abstract class MixinGaiaGuardian extends Mob {
         mobSpawnTicks -= ticksSkip;
 
         // extra spawns
-        int oldWaveCount = oldSpawnTicks / MOB_SPAWN_WAVE_TIME,
-                newWaveCount = mobSpawnTicks / MOB_SPAWN_WAVE_TIME;
+        int oldWaveCount = oldSpawnTicks / MOB_SPAWN_WAVE_TIME, newWaveCount = mobSpawnTicks / MOB_SPAWN_WAVE_TIME;
         if (oldWaveCount <= newWaveCount) return;
         var players = this.getPlayersAround();
         while (oldWaveCount > newWaveCount) {
