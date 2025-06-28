@@ -119,12 +119,36 @@
   name: doFinalEnchantmentSplit
   side: common
   type: boolean
+- category: GaiaGuardian
+  default: 'true'
+  descrip: accepts damage higher than 32
+  name: removesDamageCap
+  side: common
+  type: boolean
+- category: GaiaGuardian
+  default: 10, 0, 900
+  descrip: how many ticks to skip summoning stage when gaia guardian being attacked; 0 to disable this feature
+  name: decreasesInvulTimeByAttacking
+  side: common
+  type: int
+- category: GaiaGuardian
+  default: 'true'
+  descrip: allows being attacked by & dropping loots for fake players (like deployer from `Create`)
+  name: allowsFakePlayer
+  side: common
+  type: boolean
 - category: Misc
   default: 'true'
   descrip: Terra Blade beams inherit damage (and fire aspect) from the sword
   name: terraBladeBeamInheritsItemDamage
   side: common
   type: boolean
+- category: Misc
+  default: 100, 1, 114514
+  descrip: scales the output rate for Power Generator block
+  name: multiplyFEGeneratorOutput
+  side: common
+  type: int
 - category: Interop.Mekanism
   default: 1, 0, 1e10
   descrip: how many mana points each FE point equals

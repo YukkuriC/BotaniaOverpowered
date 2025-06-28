@@ -76,11 +76,23 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public boolean doFinalEnchantmentSplit() {
         return cfg_doFinalEnchantmentSplit.get();
     }
+    public boolean removesDamageCap() {
+        return cfg_removesDamageCap.get();
+    }
+    public int decreasesInvulTimeByAttacking() {
+        return cfg_decreasesInvulTimeByAttacking.get();
+    }
+    public boolean allowsFakePlayer() {
+        return cfg_allowsFakePlayer.get();
+    }
     public boolean terraBladeBeamInheritsItemDamage() {
         return cfg_terraBladeBeamInheritsItemDamage.get();
     }
-    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner, cfg_enablesManaPylonPump, cfg_enablesPylonPumpFx, cfg_enablesPassiveThermalily, cfg_enchantBooks, cfg_treatEnchantedItemAsBook, cfg_acceptsAllInsideBook, cfg_ignoresCompatibleCheck, cfg_doFinalEnchantmentSplit, cfg_terraBladeBeamInheritsItemDamage, cfg_MekasuitHelmetAcceptsAncientWill;
-    public ForgeConfigSpec.IntValue cfg_ruleLifeGameNew, cfg_ruleLifeGameKeep, cfg_pylonPumpMaxRange, cfg_pylonPumpSpeed, cfg_pylonPumpFxStrength;
+    public int multiplyFEGeneratorOutput() {
+        return cfg_multiplyFEGeneratorOutput.get();
+    }
+    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner, cfg_enablesManaPylonPump, cfg_enablesPylonPumpFx, cfg_enablesPassiveThermalily, cfg_enchantBooks, cfg_treatEnchantedItemAsBook, cfg_acceptsAllInsideBook, cfg_ignoresCompatibleCheck, cfg_doFinalEnchantmentSplit, cfg_removesDamageCap, cfg_allowsFakePlayer, cfg_terraBladeBeamInheritsItemDamage, cfg_MekasuitHelmetAcceptsAncientWill;
+    public ForgeConfigSpec.IntValue cfg_ruleLifeGameNew, cfg_ruleLifeGameKeep, cfg_pylonPumpMaxRange, cfg_pylonPumpSpeed, cfg_pylonPumpFxStrength, cfg_decreasesInvulTimeByAttacking, cfg_multiplyFEGeneratorOutput;
     public ForgeConfigSpec.DoubleValue cfg_pylonPumpLossRatio, cfg_MekasuitConversionRatio;
 
     public BotaniaOPConfigForge(ForgeConfigSpec.Builder builder) {
@@ -128,8 +140,15 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
         cfg_doFinalEnchantmentSplit = builder.comment(desc_doFinalEnchantmentSplit).define("doFinalEnchantmentSplit", true);
         builder.pop();
 
+        builder.push("GaiaGuardian");
+        cfg_removesDamageCap = builder.comment(desc_removesDamageCap).define("removesDamageCap", true);
+        cfg_decreasesInvulTimeByAttacking = builder.comment(desc_decreasesInvulTimeByAttacking).defineInRange("decreasesInvulTimeByAttacking", 10, 0, 900);
+        cfg_allowsFakePlayer = builder.comment(desc_allowsFakePlayer).define("allowsFakePlayer", true);
+        builder.pop();
+
         builder.push("Misc");
         cfg_terraBladeBeamInheritsItemDamage = builder.comment(desc_terraBladeBeamInheritsItemDamage).define("terraBladeBeamInheritsItemDamage", true);
+        cfg_multiplyFEGeneratorOutput = builder.comment(desc_multiplyFEGeneratorOutput).defineInRange("multiplyFEGeneratorOutput", 100, 1, 114514);
         builder.pop();
 
         builder.push("Interop.Mekanism");

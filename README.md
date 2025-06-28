@@ -41,6 +41,10 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   can create conflicted enchantments (like infinity & mending)
     -   accepts enchanted items as valid source
     -   after enchantment, breaking multiblock structure makes its enchantment split into separate books
+-   Gaia Guardian
+    -   removes damage cap 32 for single hit
+    -   decreases invulnerable duration when attacked during summoning stage
+    -   allows being attacked by & dropping loots for fake players (like deployer from `Create`)
 -   (Forge exclusive) Mekanism interop:
     -   MekaSuit as mana provider
     -   MekaSuit Helmet can be combined with Ancient Will(s)
@@ -48,4 +52,5 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   Displays the _`Evil`_ mana numbers
         -   also appear inside the wand HUDs when player crouches
     -   Terra Blade beams inherit damage (and fire aspect) from the sword
+    -   Scales up output power for Power Generator block
 -   Config for all features above

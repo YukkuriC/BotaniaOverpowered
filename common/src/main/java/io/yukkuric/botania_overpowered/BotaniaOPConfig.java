@@ -85,9 +85,25 @@ public class BotaniaOPConfig {
     public static boolean doFinalEnchantmentSplit() {
         return CFG.doFinalEnchantmentSplit();
     }
+    /// <b>GaiaGuardian</b><br>accepts damage higher than 32
+    public static boolean removesDamageCap() {
+        return CFG.removesDamageCap();
+    }
+    /// <b>GaiaGuardian</b><br>how many ticks to skip summoning stage when gaia guardian being attacked; 0 to disable this feature
+    public static int decreasesInvulTimeByAttacking() {
+        return CFG.decreasesInvulTimeByAttacking();
+    }
+    /// <b>GaiaGuardian</b><br>allows being attacked by & dropping loots for fake players (like deployer from `Create`)
+    public static boolean allowsFakePlayer() {
+        return CFG.allowsFakePlayer();
+    }
     /// <b>Misc</b><br>Terra Blade beams inherit damage (and fire aspect) from the sword
     public static boolean terraBladeBeamInheritsItemDamage() {
         return CFG.terraBladeBeamInheritsItemDamage();
+    }
+    /// <b>Misc</b><br>scales the output rate for Power Generator block
+    public static int multiplyFEGeneratorOutput() {
+        return CFG.multiplyFEGeneratorOutput();
     }
     public interface CommonAccess {
         String desc_showManaAmount = "displays the EVIL numbers";
@@ -110,7 +126,11 @@ public class BotaniaOPConfig {
         String desc_acceptsAllInsideBook = "all available enchantments will be accepted, not onlt the first";
         String desc_ignoresCompatibleCheck = "accepts conflicted enchantments (for example, infinity & mending)";
         String desc_doFinalEnchantmentSplit = "splits all enchantments as separate books if enchanter structure breaks after enchantment finished";
+        String desc_removesDamageCap = "accepts damage higher than 32";
+        String desc_decreasesInvulTimeByAttacking = "how many ticks to skip summoning stage when gaia guardian being attacked; 0 to disable this feature";
+        String desc_allowsFakePlayer = "allows being attacked by & dropping loots for fake players (like deployer from `Create`)";
         String desc_terraBladeBeamInheritsItemDamage = "Terra Blade beams inherit damage (and fire aspect) from the sword";
+        String desc_multiplyFEGeneratorOutput = "scales the output rate for Power Generator block";
         boolean showManaAmount();
         boolean skipDandelifeonClearBoard();
         int ruleLifeGameNew();
@@ -131,6 +151,10 @@ public class BotaniaOPConfig {
         boolean acceptsAllInsideBook();
         boolean ignoresCompatibleCheck();
         boolean doFinalEnchantmentSplit();
+        boolean removesDamageCap();
+        int decreasesInvulTimeByAttacking();
+        boolean allowsFakePlayer();
         boolean terraBladeBeamInheritsItemDamage();
+        int multiplyFEGeneratorOutput();
     }
 }

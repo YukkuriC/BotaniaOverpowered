@@ -11,6 +11,8 @@
     "MixinDandelifeon",
     "MixinDandelifeon$ITable",
     "MixinEntropinnyum",
+    "MixinFEBlockEntity",
+    "MixinGaiaGuardian",
     "MixinNarslimmus",
     "MixinPylonPump",
     "MixinTerraBlade",

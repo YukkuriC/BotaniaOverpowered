@@ -36,7 +36,11 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Boolean> cfg_acceptsAllInsideBook = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_ignoresCompatibleCheck = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_doFinalEnchantmentSplit = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_removesDamageCap = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Integer> cfg_decreasesInvulTimeByAttacking = PropertyMirror.create(INTEGER);
+    public final PropertyMirror<Boolean> cfg_allowsFakePlayer = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_terraBladeBeamInheritsItemDamage = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Integer> cfg_multiplyFEGeneratorOutput = PropertyMirror.create(INTEGER);
     public boolean showManaAmount() {
         return cfg_showManaAmount.getValue();
     }
@@ -97,8 +101,20 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public boolean doFinalEnchantmentSplit() {
         return cfg_doFinalEnchantmentSplit.getValue();
     }
+    public boolean removesDamageCap() {
+        return cfg_removesDamageCap.getValue();
+    }
+    public int decreasesInvulTimeByAttacking() {
+        return cfg_decreasesInvulTimeByAttacking.getValue();
+    }
+    public boolean allowsFakePlayer() {
+        return cfg_allowsFakePlayer.getValue();
+    }
     public boolean terraBladeBeamInheritsItemDamage() {
         return cfg_terraBladeBeamInheritsItemDamage.getValue();
+    }
+    public int multiplyFEGeneratorOutput() {
+        return cfg_multiplyFEGeneratorOutput.getValue();
     }
 
     public ConfigTree build(ConfigTreeBuilder builder) {
@@ -158,9 +174,19 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
                 .beginValue("doFinalEnchantmentSplit", BOOLEAN, true)
                 .withComment(desc_doFinalEnchantmentSplit).finishValue(cfg_doFinalEnchantmentSplit::mirror)
                 .finishBranch();
+        builder.fork("GaiaGuardian")
+                .beginValue("removesDamageCap", BOOLEAN, true)
+                .withComment(desc_removesDamageCap).finishValue(cfg_removesDamageCap::mirror)
+                .beginValue("decreasesInvulTimeByAttacking", INTEGER, 10)
+                .withComment(desc_decreasesInvulTimeByAttacking).finishValue(cfg_decreasesInvulTimeByAttacking::mirror)
+                .beginValue("allowsFakePlayer", BOOLEAN, true)
+                .withComment(desc_allowsFakePlayer).finishValue(cfg_allowsFakePlayer::mirror)
+                .finishBranch();
         builder.fork("Misc")
                 .beginValue("terraBladeBeamInheritsItemDamage", BOOLEAN, true)
                 .withComment(desc_terraBladeBeamInheritsItemDamage).finishValue(cfg_terraBladeBeamInheritsItemDamage::mirror)
+                .beginValue("multiplyFEGeneratorOutput", INTEGER, 100)
+                .withComment(desc_multiplyFEGeneratorOutput).finishValue(cfg_multiplyFEGeneratorOutput::mirror)
                 .finishBranch();
         return builder.build();
     }
