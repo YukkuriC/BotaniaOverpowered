@@ -32,9 +32,17 @@ public abstract class MixinGaiaGuardian extends Mob {
         super(entityType, level);
     }
 
+    boolean isDying() {
+        return (getHealth() / getMaxHealth()) < 0.2f;
+    }
+
     @WrapOperation(method = {"hurt", "actuallyHurt", "getDamageAfterArmorAbsorb"}, at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(FF)F"))
     float noDamageCap(float num_32, float dmg, Operation<Float> original) {
-        if (BotaniaOPConfig.removesDamageCap()) return dmg;
+        if (BotaniaOPConfig.removesDamageCap()) {
+            // extra check to prevent insta-kill and no rewards
+            if (!isDying()) return original.call(getHealth() - 1, dmg);
+            return dmg;
+        }
         return original.call(num_32, dmg);
     }
 
