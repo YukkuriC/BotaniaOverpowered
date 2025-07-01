@@ -36,9 +36,22 @@ import vazkii.botania.common.item.equipment.armor.terrasteel.TerrasteelHelmItem;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Supplier;
 
 @Mixin(ItemMekaSuitArmor.class)
 public class MixinTerraMekaSuit extends ArmorItem implements AncientWillContainer {
+    private static final Supplier<Boolean> getShiftKeyDown;
+
+    static {
+        Supplier<Boolean> getter;
+        try {
+            getter = Screen::hasShiftDown;
+        } catch (Throwable e) {
+            getter = () -> false;
+        }
+        getShiftKeyDown = getter;
+    }
+
     public MixinTerraMekaSuit(ArmorMaterial material, Type type, Properties properties) {
         super(material, type, properties);
     }
@@ -58,7 +71,7 @@ public class MixinTerraMekaSuit extends ArmorItem implements AncientWillContaine
     // tooltip
     @Inject(method = "appendHoverText", at = @At("RETURN"))
     void addTooltipWhenShift(@NotNull ItemStack stack, Level world, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag, CallbackInfo ci) {
-        if (!BotaniaOPConfigForge.MekasuitHelmetAcceptsAncientWill() || type != Type.HELMET || !Screen.hasShiftDown())
+        if (!BotaniaOPConfigForge.MekasuitHelmetAcceptsAncientWill() || type != Type.HELMET || !getShiftKeyDown.get())
             return;
         for (var sub : AncientWillType.values()) {
             if (this.hasAncientWill(stack, sub)) {
