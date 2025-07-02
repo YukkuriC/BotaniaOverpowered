@@ -5,12 +5,12 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import io.yukkuric.botania_overpowered.forge.BotaniaOPConfigForge;
+import io.yukkuric.botania_overpowered.forge.BotaniaOPForge;
 import mekanism.client.render.armor.MekaSuitArmor;
 import mekanism.common.item.gear.ItemMekaSuitArmor;
 import mekanism.common.lib.Color;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.Sheets;
@@ -36,22 +36,9 @@ import vazkii.botania.common.item.equipment.armor.terrasteel.TerrasteelHelmItem;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.function.Supplier;
 
 @Mixin(ItemMekaSuitArmor.class)
 public class MixinTerraMekaSuit extends ArmorItem implements AncientWillContainer {
-    private static final Supplier<Boolean> getShiftKeyDown;
-
-    static {
-        Supplier<Boolean> getter;
-        try {
-            getter = Screen::hasShiftDown;
-        } catch (Throwable e) {
-            getter = () -> false;
-        }
-        getShiftKeyDown = getter;
-    }
-
     public MixinTerraMekaSuit(ArmorMaterial material, Type type, Properties properties) {
         super(material, type, properties);
     }
@@ -71,7 +58,7 @@ public class MixinTerraMekaSuit extends ArmorItem implements AncientWillContaine
     // tooltip
     @Inject(method = "appendHoverText", at = @At("RETURN"))
     void addTooltipWhenShift(@NotNull ItemStack stack, Level world, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag, CallbackInfo ci) {
-        if (!BotaniaOPConfigForge.MekasuitHelmetAcceptsAncientWill() || type != Type.HELMET || !getShiftKeyDown.get())
+        if (!BotaniaOPConfigForge.MekasuitHelmetAcceptsAncientWill() || type != Type.HELMET || !BotaniaOPForge.IsShiftKeyDown())
             return;
         for (var sub : AncientWillType.values()) {
             if (this.hasAncientWill(stack, sub)) {

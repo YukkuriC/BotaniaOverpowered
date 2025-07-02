@@ -7,21 +7,29 @@ import io.yukkuric.botania_overpowered.forge.client.ManaTooltipForge;
 import io.yukkuric.botania_overpowered.create.BurnerExoflameHandler;
 import io.yukkuric.botania_overpowered.forge.mekanism.MekasuitManaItem;
 import mekanism.common.item.gear.ItemMekaSuitArmor;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.*;
 import net.minecraftforge.fml.common.Mod;
 import vazkii.botania.api.BotaniaForgeCapabilities;
 import vazkii.botania.forge.CapabilityUtil;
+
+import java.util.function.Supplier;
 
 @Mod(BotaniaOP.MOD_ID)
 public final class BotaniaOPForge extends BotaniaOP {
     final ResourceLocation MEKASUIT_MANA_ID = ResourceLocation.tryBuild(MOD_ID, "mekasuit_mana");
     final ResourceLocation CREATE_EXOFLAME_ID = ResourceLocation.tryBuild(MOD_ID, "create_exoflame_hook");
+    static Supplier<Boolean> getShiftKeyDown = () -> false;
+
+    public static boolean IsShiftKeyDown() {
+        return getShiftKeyDown.get();
+    }
 
     @Override
     public boolean isModLoaded(String id) {
@@ -48,5 +56,11 @@ public final class BotaniaOPForge extends BotaniaOP {
 
         var ctx = ModLoadingContext.get();
         BotaniaOPConfigForge.register(ctx);
+
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> BotaniaOPForge::InitClient);
+    }
+
+    static void InitClient() {
+        getShiftKeyDown = Screen::hasShiftDown;
     }
 }
