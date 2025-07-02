@@ -39,10 +39,9 @@ import java.util.Locale;
 
 @Mixin(ItemMekaSuitArmor.class)
 public class MixinTerraMekaSuit extends ArmorItem implements AncientWillContainer {
-    public MixinTerraMekaSuit(ArmorMaterial material, Type type, Properties properties) {
-        super(material, type, properties);
+    public MixinTerraMekaSuit(ArmorMaterial material, EquipmentSlot slot, Properties properties) {
+        super(material, slot, properties);
     }
-
     // recipe
     @Override
     public void addAncientWill(ItemStack stack, AncientWillType willType) {
@@ -51,14 +50,14 @@ public class MixinTerraMekaSuit extends ArmorItem implements AncientWillContaine
     }
     @Override
     public boolean hasAncientWill(ItemStack stack, AncientWillType willType) {
-        if (!BotaniaOPConfigForge.MekasuitHelmetAcceptsAncientWill() || type != Type.HELMET) return true;
+        if (!BotaniaOPConfigForge.MekasuitHelmetAcceptsAncientWill() || slot != EquipmentSlot.HEAD) return true;
         return ((TerrasteelHelmItem) BotaniaItems.terrasteelHelm).hasAncientWill(stack, willType);
     }
 
     // tooltip
     @Inject(method = "appendHoverText", at = @At("RETURN"))
     void addTooltipWhenShift(@NotNull ItemStack stack, Level world, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag, CallbackInfo ci) {
-        if (!BotaniaOPConfigForge.MekasuitHelmetAcceptsAncientWill() || type != Type.HELMET || !BotaniaOPForge.IsShiftKeyDown())
+        if (!BotaniaOPConfigForge.MekasuitHelmetAcceptsAncientWill() || slot != EquipmentSlot.HEAD || !BotaniaOPForge.IsShiftKeyDown())
             return;
         for (var sub : AncientWillType.values()) {
             if (this.hasAncientWill(stack, sub)) {
