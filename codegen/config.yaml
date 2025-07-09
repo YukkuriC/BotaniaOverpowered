@@ -40,6 +40,24 @@
   name: skipNarslimmusNaturalCheck
   side: common
   type: boolean
+- category: Endoflame
+  default: 'true'
+  descrip: skips the burning process for fuel items
+  name: instantBurnFuel
+  side: common
+  type: boolean
+- category: Endoflame
+  default: 'true'
+  descrip: increases capacity when consuming large fuel
+  name: extraCapacityForFuel
+  side: common
+  type: boolean
+- category: Endoflame
+  default: 'true'
+  descrip: no more 32000 tick burning limit
+  name: breaksMaxBurningTimeLimit
+  side: common
+  type: boolean
 - category: Exoflame
   default: 'true'
   descrip: heats Blaze Burner blocks from Create

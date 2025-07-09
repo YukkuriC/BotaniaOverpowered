@@ -33,6 +33,18 @@ public class BotaniaOPConfig {
     public static boolean skipNarslimmusNaturalCheck() {
         return CFG.skipNarslimmusNaturalCheck();
     }
+    /// <b>Endoflame</b><br>skips the burning process for fuel items
+    public static boolean instantBurnFuel() {
+        return CFG.instantBurnFuel();
+    }
+    /// <b>Endoflame</b><br>increases capacity when consuming large fuel
+    public static boolean extraCapacityForFuel() {
+        return CFG.extraCapacityForFuel();
+    }
+    /// <b>Endoflame</b><br>no more 32000 tick burning limit
+    public static boolean breaksMaxBurningTimeLimit() {
+        return CFG.breaksMaxBurningTimeLimit();
+    }
     /// <b>Exoflame</b><br>heats Blaze Burner blocks from Create
     public static boolean heatsBlazeBurner() {
         return CFG.heatsBlazeBurner();
@@ -117,6 +129,9 @@ public class BotaniaOPConfig {
         String desc_skipEntropinnyumDuperCheck = "accepts TNTs from dupers";
         String desc_enableEntropinnyumUnderwater = "accepts TNTs inside liquids";
         String desc_skipNarslimmusNaturalCheck = "accepts ALL slimes";
+        String desc_instantBurnFuel = "skips the burning process for fuel items";
+        String desc_extraCapacityForFuel = "increases capacity when consuming large fuel";
+        String desc_breaksMaxBurningTimeLimit = "no more 32000 tick burning limit";
         String desc_heatsBlazeBurner = "heats Blaze Burner blocks from Create";
         String desc_enchantedSoilEnablesSuperHeat = "applies hyper-heat for Blaze Burner blocks when on enchanted soil";
         String desc_enablesManaPylonPump = "makes Mana Pylons extract mana from the pool below and dump to wand-bound mana pool";
@@ -143,6 +158,9 @@ public class BotaniaOPConfig {
         boolean skipEntropinnyumDuperCheck();
         boolean enableEntropinnyumUnderwater();
         boolean skipNarslimmusNaturalCheck();
+        boolean instantBurnFuel();
+        boolean extraCapacityForFuel();
+        boolean breaksMaxBurningTimeLimit();
         boolean heatsBlazeBurner();
         boolean enchantedSoilEnablesSuperHeat();
         boolean enablesManaPylonPump();

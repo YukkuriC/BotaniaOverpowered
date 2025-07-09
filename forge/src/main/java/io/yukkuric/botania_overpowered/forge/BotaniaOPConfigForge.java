@@ -37,6 +37,15 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public boolean skipNarslimmusNaturalCheck() {
         return cfg_skipNarslimmusNaturalCheck.get();
     }
+    public boolean instantBurnFuel() {
+        return cfg_instantBurnFuel.get();
+    }
+    public boolean extraCapacityForFuel() {
+        return cfg_extraCapacityForFuel.get();
+    }
+    public boolean breaksMaxBurningTimeLimit() {
+        return cfg_breaksMaxBurningTimeLimit.get();
+    }
     public boolean heatsBlazeBurner() {
         return cfg_heatsBlazeBurner.get();
     }
@@ -100,6 +109,9 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
             cfg_skipEntropinnyumDuperCheck,
             cfg_enableEntropinnyumUnderwater,
             cfg_skipNarslimmusNaturalCheck,
+            cfg_instantBurnFuel,
+            cfg_extraCapacityForFuel,
+            cfg_breaksMaxBurningTimeLimit,
             cfg_heatsBlazeBurner,
             cfg_enchantedSoilEnablesSuperHeat,
             cfg_enablesManaPylonPump,
@@ -144,6 +156,12 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
 
         builder.push("Narslimmus");
         cfg_skipNarslimmusNaturalCheck = builder.comment(desc_skipNarslimmusNaturalCheck).define("skipNarslimmusNaturalCheck", true);
+        builder.pop();
+
+        builder.push("Endoflame");
+        cfg_instantBurnFuel = builder.comment(desc_instantBurnFuel).define("instantBurnFuel", true);
+        cfg_extraCapacityForFuel = builder.comment(desc_extraCapacityForFuel).define("extraCapacityForFuel", true);
+        cfg_breaksMaxBurningTimeLimit = builder.comment(desc_breaksMaxBurningTimeLimit).define("breaksMaxBurningTimeLimit", true);
         builder.pop();
 
         builder.push("Exoflame");

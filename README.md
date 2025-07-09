@@ -26,6 +26,10 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   TNTs exploding in liquids now count as valid
 -   Narslimmus changes
     -   ignores slime chunk restrictions and accepts ALL slimes, including ones from cages/eggs/split, magma cubes, (theoretically) TConstruct varieties, etc.
+-   Endoflame changes
+    -   skips the burning process for fuel items
+    -   extended capacity for burning large fuel
+    -   no more 32000 tick burning limit
 -   Mana Pylon Pump
     -   places on a mana receiver (pool, spreader, etc.), binds to another mana receiver with _Wand of the Forest_, then the mana transport begins
     -   configurable speed, max distance, loss ratio & particle fx

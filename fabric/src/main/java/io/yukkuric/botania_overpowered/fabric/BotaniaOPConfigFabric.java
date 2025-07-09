@@ -23,6 +23,9 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Boolean> cfg_skipEntropinnyumDuperCheck = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_enableEntropinnyumUnderwater = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_skipNarslimmusNaturalCheck = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_instantBurnFuel = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_extraCapacityForFuel = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_breaksMaxBurningTimeLimit = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_heatsBlazeBurner = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_enchantedSoilEnablesSuperHeat = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_enablesManaPylonPump = PropertyMirror.create(BOOLEAN);
@@ -62,6 +65,15 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     }
     public boolean skipNarslimmusNaturalCheck() {
         return cfg_skipNarslimmusNaturalCheck.getValue();
+    }
+    public boolean instantBurnFuel() {
+        return cfg_instantBurnFuel.getValue();
+    }
+    public boolean extraCapacityForFuel() {
+        return cfg_extraCapacityForFuel.getValue();
+    }
+    public boolean breaksMaxBurningTimeLimit() {
+        return cfg_breaksMaxBurningTimeLimit.getValue();
     }
     public boolean heatsBlazeBurner() {
         return cfg_heatsBlazeBurner.getValue();
@@ -143,6 +155,14 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
         builder.fork("Narslimmus")
                 .beginValue("skipNarslimmusNaturalCheck", BOOLEAN, true)
                 .withComment(desc_skipNarslimmusNaturalCheck).finishValue(cfg_skipNarslimmusNaturalCheck::mirror)
+                .finishBranch();
+        builder.fork("Endoflame")
+                .beginValue("instantBurnFuel", BOOLEAN, true)
+                .withComment(desc_instantBurnFuel).finishValue(cfg_instantBurnFuel::mirror)
+                .beginValue("extraCapacityForFuel", BOOLEAN, true)
+                .withComment(desc_extraCapacityForFuel).finishValue(cfg_extraCapacityForFuel::mirror)
+                .beginValue("breaksMaxBurningTimeLimit", BOOLEAN, true)
+                .withComment(desc_breaksMaxBurningTimeLimit).finishValue(cfg_breaksMaxBurningTimeLimit::mirror)
                 .finishBranch();
         builder.fork("Exoflame")
                 .beginValue("heatsBlazeBurner", BOOLEAN, true)
