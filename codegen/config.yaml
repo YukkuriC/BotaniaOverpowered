@@ -46,6 +46,12 @@
   name: heatsBlazeBurner
   side: common
   type: boolean
+- category: Exoflame
+  default: 'true'
+  descrip: applies hyper-heat for Blaze Burner blocks when on enchanted soil
+  name: enchantedSoilEnablesSuperHeat
+  side: common
+  type: boolean
 - category: ManaPylonPump
   default: 'true'
   descrip: makes Mana Pylons extract mana from the pool below and dump to wand-bound

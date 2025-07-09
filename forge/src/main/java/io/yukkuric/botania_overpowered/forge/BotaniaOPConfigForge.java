@@ -40,6 +40,9 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public boolean heatsBlazeBurner() {
         return cfg_heatsBlazeBurner.get();
     }
+    public boolean enchantedSoilEnablesSuperHeat() {
+        return cfg_enchantedSoilEnablesSuperHeat.get();
+    }
     public boolean enablesManaPylonPump() {
         return cfg_enablesManaPylonPump.get();
     }
@@ -91,9 +94,37 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public int multiplyFEGeneratorOutput() {
         return cfg_multiplyFEGeneratorOutput.get();
     }
-    public ForgeConfigSpec.BooleanValue cfg_showManaAmount, cfg_skipDandelifeonClearBoard, cfg_skipEntropinnyumDuperCheck, cfg_enableEntropinnyumUnderwater, cfg_skipNarslimmusNaturalCheck, cfg_heatsBlazeBurner, cfg_enablesManaPylonPump, cfg_enablesPylonPumpFx, cfg_enablesPassiveThermalily, cfg_enchantBooks, cfg_treatEnchantedItemAsBook, cfg_acceptsAllInsideBook, cfg_ignoresCompatibleCheck, cfg_doFinalEnchantmentSplit, cfg_removesDamageCap, cfg_allowsFakePlayer, cfg_terraBladeBeamInheritsItemDamage, cfg_MekasuitHelmetAcceptsAncientWill;
-    public ForgeConfigSpec.IntValue cfg_ruleLifeGameNew, cfg_ruleLifeGameKeep, cfg_pylonPumpMaxRange, cfg_pylonPumpSpeed, cfg_pylonPumpFxStrength, cfg_decreasesInvulTimeByAttacking, cfg_multiplyFEGeneratorOutput;
-    public ForgeConfigSpec.DoubleValue cfg_pylonPumpLossRatio, cfg_MekasuitConversionRatio;
+    public ForgeConfigSpec.BooleanValue
+            cfg_showManaAmount,
+            cfg_skipDandelifeonClearBoard,
+            cfg_skipEntropinnyumDuperCheck,
+            cfg_enableEntropinnyumUnderwater,
+            cfg_skipNarslimmusNaturalCheck,
+            cfg_heatsBlazeBurner,
+            cfg_enchantedSoilEnablesSuperHeat,
+            cfg_enablesManaPylonPump,
+            cfg_enablesPylonPumpFx,
+            cfg_enablesPassiveThermalily,
+            cfg_enchantBooks,
+            cfg_treatEnchantedItemAsBook,
+            cfg_acceptsAllInsideBook,
+            cfg_ignoresCompatibleCheck,
+            cfg_doFinalEnchantmentSplit,
+            cfg_removesDamageCap,
+            cfg_allowsFakePlayer,
+            cfg_terraBladeBeamInheritsItemDamage,
+            cfg_MekasuitHelmetAcceptsAncientWill;
+    public ForgeConfigSpec.IntValue
+            cfg_ruleLifeGameNew,
+            cfg_ruleLifeGameKeep,
+            cfg_pylonPumpMaxRange,
+            cfg_pylonPumpSpeed,
+            cfg_pylonPumpFxStrength,
+            cfg_decreasesInvulTimeByAttacking,
+            cfg_multiplyFEGeneratorOutput;
+    public ForgeConfigSpec.DoubleValue
+            cfg_pylonPumpLossRatio,
+            cfg_MekasuitConversionRatio;
 
     public BotaniaOPConfigForge(ForgeConfigSpec.Builder builder) {
         builder.push("Display");
@@ -117,6 +148,7 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
 
         builder.push("Exoflame");
         cfg_heatsBlazeBurner = builder.comment(desc_heatsBlazeBurner).define("heatsBlazeBurner", true);
+        cfg_enchantedSoilEnablesSuperHeat = builder.comment(desc_enchantedSoilEnablesSuperHeat).define("enchantedSoilEnablesSuperHeat", true);
         builder.pop();
 
         builder.push("ManaPylonPump");

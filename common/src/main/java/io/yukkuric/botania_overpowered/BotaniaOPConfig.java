@@ -37,6 +37,10 @@ public class BotaniaOPConfig {
     public static boolean heatsBlazeBurner() {
         return CFG.heatsBlazeBurner();
     }
+    /// <b>Exoflame</b><br>applies hyper-heat for Blaze Burner blocks when on enchanted soil
+    public static boolean enchantedSoilEnablesSuperHeat() {
+        return CFG.enchantedSoilEnablesSuperHeat();
+    }
     /// <b>ManaPylonPump</b><br>makes Mana Pylons extract mana from the pool below and dump to wand-bound mana pool
     public static boolean enablesManaPylonPump() {
         return CFG.enablesManaPylonPump();
@@ -114,6 +118,7 @@ public class BotaniaOPConfig {
         String desc_enableEntropinnyumUnderwater = "accepts TNTs inside liquids";
         String desc_skipNarslimmusNaturalCheck = "accepts ALL slimes";
         String desc_heatsBlazeBurner = "heats Blaze Burner blocks from Create";
+        String desc_enchantedSoilEnablesSuperHeat = "applies hyper-heat for Blaze Burner blocks when on enchanted soil";
         String desc_enablesManaPylonPump = "makes Mana Pylons extract mana from the pool below and dump to wand-bound mana pool";
         String desc_pylonPumpMaxRange = "max distance between the pylon and the pool bound";
         String desc_pylonPumpSpeed = "how many mana points will be extracted each tick (for reference, each spark pair has speed of 1000)";
@@ -139,6 +144,7 @@ public class BotaniaOPConfig {
         boolean enableEntropinnyumUnderwater();
         boolean skipNarslimmusNaturalCheck();
         boolean heatsBlazeBurner();
+        boolean enchantedSoilEnablesSuperHeat();
         boolean enablesManaPylonPump();
         int pylonPumpMaxRange();
         int pylonPumpSpeed();

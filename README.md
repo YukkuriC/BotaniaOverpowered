@@ -33,6 +33,7 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
 -   Exoflame changes (Create compat)
     -   lights up Blaze Burner blocks nearby, if they have valid working blocks above
         -   custom workstation blocks can be added with tag `#botania_overpowered:blazeburner_target` (currently only distillation tank from `Create Diesel Generator`)
+    -   enables super-heat on enchanted soil
 -   Thermalily changes
     -   no longer consumes lava during its cooldown
 -   Mana Enchanter changes

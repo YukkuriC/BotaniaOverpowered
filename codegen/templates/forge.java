@@ -22,9 +22,8 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     }
     {%- endfor %}
     {%- for grp,lines in group_val(data,'type') %}
-    public ForgeConfigSpec.{{grp.capitalize()}}Value {% for line in lines -%}
-            cfg_{{line.name}}
-            {%- if loop.last %};{% else %}, {% endif %}
+    public ForgeConfigSpec.{{grp.capitalize()}}Value{% for line in lines %}
+            cfg_{{line.name}}{%- if loop.last %};{% else %},{% endif %}
         {%- endfor %}
     {%- endfor %}
 

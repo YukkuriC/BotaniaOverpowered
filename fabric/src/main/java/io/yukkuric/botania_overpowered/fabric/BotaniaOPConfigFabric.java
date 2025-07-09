@@ -24,6 +24,7 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Boolean> cfg_enableEntropinnyumUnderwater = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_skipNarslimmusNaturalCheck = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_heatsBlazeBurner = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_enchantedSoilEnablesSuperHeat = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_enablesManaPylonPump = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Integer> cfg_pylonPumpMaxRange = PropertyMirror.create(INTEGER);
     public final PropertyMirror<Integer> cfg_pylonPumpSpeed = PropertyMirror.create(INTEGER);
@@ -64,6 +65,9 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     }
     public boolean heatsBlazeBurner() {
         return cfg_heatsBlazeBurner.getValue();
+    }
+    public boolean enchantedSoilEnablesSuperHeat() {
+        return cfg_enchantedSoilEnablesSuperHeat.getValue();
     }
     public boolean enablesManaPylonPump() {
         return cfg_enablesManaPylonPump.getValue();
@@ -143,6 +147,8 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
         builder.fork("Exoflame")
                 .beginValue("heatsBlazeBurner", BOOLEAN, true)
                 .withComment(desc_heatsBlazeBurner).finishValue(cfg_heatsBlazeBurner::mirror)
+                .beginValue("enchantedSoilEnablesSuperHeat", BOOLEAN, true)
+                .withComment(desc_enchantedSoilEnablesSuperHeat).finishValue(cfg_enchantedSoilEnablesSuperHeat::mirror)
                 .finishBranch();
         builder.fork("ManaPylonPump")
                 .beginValue("enablesManaPylonPump", BOOLEAN, true)
