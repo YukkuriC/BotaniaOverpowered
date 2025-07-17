@@ -4,6 +4,12 @@
   name: showManaAmount
   side: common
   type: boolean
+- category: Display
+  default: 'false'
+  descrip: always show red strings even without wand in hand; might have inpact on frame rate, use at your own risk
+  name: keepRedString
+  side: common
+  type: boolean
 - category: Dandelifeon
   default: 'true'
   descrip: no longer wipe all cells out when consuming
@@ -161,10 +167,22 @@
   name: allowsFakePlayer
   side: common
   type: boolean
-- category: Misc
+- category: Weapon
   default: 'true'
   descrip: Terra Blade beams inherit damage (and fire aspect) from the sword
   name: terraBladeBeamInheritsItemDamage
+  side: common
+  type: boolean
+- category: Weapon
+  default: 'true'
+  descrip: Thundercaller's chain lightning inherits damage (and fire aspect) from the sword
+  name: chainLightningInheritsItemDamage
+  side: common
+  type: boolean
+- category: Weapon
+  default: 'true'
+  descrip: Starcaller's stars inherit damage (and fire aspect) from the sword
+  name: fallingStarInheritsItemDamage
   side: common
   type: boolean
 - category: Misc

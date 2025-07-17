@@ -53,9 +53,14 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
 -   (Forge exclusive) Mekanism interop:
     -   MekaSuit as mana provider
     -   MekaSuit Helmet can be combined with Ancient Will(s)
--   Misc features
-    -   Displays the _`Evil`_ mana numbers
-        -   also appear inside the wand HUDs when player crouches
+-   Weapon changes
     -   Terra Blade beams inherit damage (and fire aspect) from the sword
-    -   Scales up output power for Power Generator block
+    -   Thundercaller's chain lightning inherits damage (and fire aspect) from the sword
+    -   Starcaller's stars inherit damage (and fire aspect) from the sword
+-   Display & Misc features
+    -   displays the _`Evil`_ mana numbers
+        -   also appear inside the wand HUDs when player crouches
+    -   always show red strings even without wand in hand
+        -   _might have inpact on frame rate, use at your own risk_
+    -   scales up output power for Power Generator block
 -   Config for all features above

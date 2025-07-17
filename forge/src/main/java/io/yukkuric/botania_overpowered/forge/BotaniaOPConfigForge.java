@@ -19,6 +19,9 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public boolean showManaAmount() {
         return cfg_showManaAmount.get();
     }
+    public boolean keepRedString() {
+        return cfg_keepRedString.get();
+    }
     public boolean skipDandelifeonClearBoard() {
         return cfg_skipDandelifeonClearBoard.get();
     }
@@ -100,11 +103,18 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public boolean terraBladeBeamInheritsItemDamage() {
         return cfg_terraBladeBeamInheritsItemDamage.get();
     }
+    public boolean chainLightningInheritsItemDamage() {
+        return cfg_chainLightningInheritsItemDamage.get();
+    }
+    public boolean fallingStarInheritsItemDamage() {
+        return cfg_fallingStarInheritsItemDamage.get();
+    }
     public int multiplyFEGeneratorOutput() {
         return cfg_multiplyFEGeneratorOutput.get();
     }
     public ForgeConfigSpec.BooleanValue
             cfg_showManaAmount,
+            cfg_keepRedString,
             cfg_skipDandelifeonClearBoard,
             cfg_skipEntropinnyumDuperCheck,
             cfg_enableEntropinnyumUnderwater,
@@ -125,6 +135,8 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
             cfg_removesDamageCap,
             cfg_allowsFakePlayer,
             cfg_terraBladeBeamInheritsItemDamage,
+            cfg_chainLightningInheritsItemDamage,
+            cfg_fallingStarInheritsItemDamage,
             cfg_MekasuitHelmetAcceptsAncientWill;
     public ForgeConfigSpec.IntValue
             cfg_ruleLifeGameNew,
@@ -141,6 +153,7 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public BotaniaOPConfigForge(ForgeConfigSpec.Builder builder) {
         builder.push("Display");
         cfg_showManaAmount = builder.comment(desc_showManaAmount).define("showManaAmount", true);
+        cfg_keepRedString = builder.comment(desc_keepRedString).define("keepRedString", false);
         builder.pop();
 
         builder.push("Dandelifeon");
@@ -196,8 +209,13 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
         cfg_allowsFakePlayer = builder.comment(desc_allowsFakePlayer).define("allowsFakePlayer", true);
         builder.pop();
 
-        builder.push("Misc");
+        builder.push("Weapon");
         cfg_terraBladeBeamInheritsItemDamage = builder.comment(desc_terraBladeBeamInheritsItemDamage).define("terraBladeBeamInheritsItemDamage", true);
+        cfg_chainLightningInheritsItemDamage = builder.comment(desc_chainLightningInheritsItemDamage).define("chainLightningInheritsItemDamage", true);
+        cfg_fallingStarInheritsItemDamage = builder.comment(desc_fallingStarInheritsItemDamage).define("fallingStarInheritsItemDamage", true);
+        builder.pop();
+
+        builder.push("Misc");
         cfg_multiplyFEGeneratorOutput = builder.comment(desc_multiplyFEGeneratorOutput).defineInRange("multiplyFEGeneratorOutput", 100, 1, 114514);
         builder.pop();
 

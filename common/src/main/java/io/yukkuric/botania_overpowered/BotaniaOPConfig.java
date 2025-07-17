@@ -9,6 +9,10 @@ public class BotaniaOPConfig {
     public static boolean showManaAmount() {
         return CFG.showManaAmount();
     }
+    /// <b>Display</b><br>always show red strings even without wand in hand; might have inpact on frame rate, use at your own risk
+    public static boolean keepRedString() {
+        return CFG.keepRedString();
+    }
     /// <b>Dandelifeon</b><br>no longer wipe all cells out when consuming
     public static boolean skipDandelifeonClearBoard() {
         return CFG.skipDandelifeonClearBoard();
@@ -113,9 +117,17 @@ public class BotaniaOPConfig {
     public static boolean allowsFakePlayer() {
         return CFG.allowsFakePlayer();
     }
-    /// <b>Misc</b><br>Terra Blade beams inherit damage (and fire aspect) from the sword
+    /// <b>Weapon</b><br>Terra Blade beams inherit damage (and fire aspect) from the sword
     public static boolean terraBladeBeamInheritsItemDamage() {
         return CFG.terraBladeBeamInheritsItemDamage();
+    }
+    /// <b>Weapon</b><br>Thundercaller's chain lightning inherits damage (and fire aspect) from the sword
+    public static boolean chainLightningInheritsItemDamage() {
+        return CFG.chainLightningInheritsItemDamage();
+    }
+    /// <b>Weapon</b><br>Starcaller's stars inherit damage (and fire aspect) from the sword
+    public static boolean fallingStarInheritsItemDamage() {
+        return CFG.fallingStarInheritsItemDamage();
     }
     /// <b>Misc</b><br>scales the output rate for Power Generator block
     public static int multiplyFEGeneratorOutput() {
@@ -123,6 +135,7 @@ public class BotaniaOPConfig {
     }
     public interface CommonAccess {
         String desc_showManaAmount = "displays the EVIL numbers";
+        String desc_keepRedString = "always show red strings even without wand in hand; might have inpact on frame rate, use at your own risk";
         String desc_skipDandelifeonClearBoard = "no longer wipe all cells out when consuming";
         String desc_ruleLifeGameNew = "custom rule bitset for new cells";
         String desc_ruleLifeGameKeep = "custom rule bitset for keeping cells";
@@ -150,8 +163,11 @@ public class BotaniaOPConfig {
         String desc_decreasesInvulTimeByAttacking = "how many ticks to skip summoning stage when gaia guardian being attacked; 0 to disable this feature";
         String desc_allowsFakePlayer = "allows being attacked by & dropping loots for fake players (like deployer from `Create`)";
         String desc_terraBladeBeamInheritsItemDamage = "Terra Blade beams inherit damage (and fire aspect) from the sword";
+        String desc_chainLightningInheritsItemDamage = "Thundercaller's chain lightning inherits damage (and fire aspect) from the sword";
+        String desc_fallingStarInheritsItemDamage = "Starcaller's stars inherit damage (and fire aspect) from the sword";
         String desc_multiplyFEGeneratorOutput = "scales the output rate for Power Generator block";
         boolean showManaAmount();
+        boolean keepRedString();
         boolean skipDandelifeonClearBoard();
         int ruleLifeGameNew();
         int ruleLifeGameKeep();
@@ -179,6 +195,8 @@ public class BotaniaOPConfig {
         int decreasesInvulTimeByAttacking();
         boolean allowsFakePlayer();
         boolean terraBladeBeamInheritsItemDamage();
+        boolean chainLightningInheritsItemDamage();
+        boolean fallingStarInheritsItemDamage();
         int multiplyFEGeneratorOutput();
     }
 }

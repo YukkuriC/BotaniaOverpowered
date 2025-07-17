@@ -17,6 +17,7 @@ import static io.github.fablabsmc.fablabs.api.fiber.v1.schema.type.derived.Confi
 public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public static final BotaniaOPConfigFabric INSTANCE = new BotaniaOPConfigFabric();
     public final PropertyMirror<Boolean> cfg_showManaAmount = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_keepRedString = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_skipDandelifeonClearBoard = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Integer> cfg_ruleLifeGameNew = PropertyMirror.create(INTEGER);
     public final PropertyMirror<Integer> cfg_ruleLifeGameKeep = PropertyMirror.create(INTEGER);
@@ -44,9 +45,14 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Integer> cfg_decreasesInvulTimeByAttacking = PropertyMirror.create(INTEGER);
     public final PropertyMirror<Boolean> cfg_allowsFakePlayer = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_terraBladeBeamInheritsItemDamage = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_chainLightningInheritsItemDamage = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_fallingStarInheritsItemDamage = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Integer> cfg_multiplyFEGeneratorOutput = PropertyMirror.create(INTEGER);
     public boolean showManaAmount() {
         return cfg_showManaAmount.getValue();
+    }
+    public boolean keepRedString() {
+        return cfg_keepRedString.getValue();
     }
     public boolean skipDandelifeonClearBoard() {
         return cfg_skipDandelifeonClearBoard.getValue();
@@ -129,6 +135,12 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public boolean terraBladeBeamInheritsItemDamage() {
         return cfg_terraBladeBeamInheritsItemDamage.getValue();
     }
+    public boolean chainLightningInheritsItemDamage() {
+        return cfg_chainLightningInheritsItemDamage.getValue();
+    }
+    public boolean fallingStarInheritsItemDamage() {
+        return cfg_fallingStarInheritsItemDamage.getValue();
+    }
     public int multiplyFEGeneratorOutput() {
         return cfg_multiplyFEGeneratorOutput.getValue();
     }
@@ -137,6 +149,8 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
         builder.fork("Display")
                 .beginValue("showManaAmount", BOOLEAN, true)
                 .withComment(desc_showManaAmount).finishValue(cfg_showManaAmount::mirror)
+                .beginValue("keepRedString", BOOLEAN, false)
+                .withComment(desc_keepRedString).finishValue(cfg_keepRedString::mirror)
                 .finishBranch();
         builder.fork("Dandelifeon")
                 .beginValue("skipDandelifeonClearBoard", BOOLEAN, true)
@@ -208,9 +222,15 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
                 .beginValue("allowsFakePlayer", BOOLEAN, true)
                 .withComment(desc_allowsFakePlayer).finishValue(cfg_allowsFakePlayer::mirror)
                 .finishBranch();
-        builder.fork("Misc")
+        builder.fork("Weapon")
                 .beginValue("terraBladeBeamInheritsItemDamage", BOOLEAN, true)
                 .withComment(desc_terraBladeBeamInheritsItemDamage).finishValue(cfg_terraBladeBeamInheritsItemDamage::mirror)
+                .beginValue("chainLightningInheritsItemDamage", BOOLEAN, true)
+                .withComment(desc_chainLightningInheritsItemDamage).finishValue(cfg_chainLightningInheritsItemDamage::mirror)
+                .beginValue("fallingStarInheritsItemDamage", BOOLEAN, true)
+                .withComment(desc_fallingStarInheritsItemDamage).finishValue(cfg_fallingStarInheritsItemDamage::mirror)
+                .finishBranch();
+        builder.fork("Misc")
                 .beginValue("multiplyFEGeneratorOutput", INTEGER, 100)
                 .withComment(desc_multiplyFEGeneratorOutput).finishValue(cfg_multiplyFEGeneratorOutput::mirror)
                 .finishBranch();
