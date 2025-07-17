@@ -1,4 +1,4 @@
-package io.yukkuric.botania_overpowered.mixin;
+package io.yukkuric.botania_overpowered.mixin.flower;
 
 import io.yukkuric.botania_overpowered.BotaniaOPConfig;
 import net.minecraft.core.BlockPos;

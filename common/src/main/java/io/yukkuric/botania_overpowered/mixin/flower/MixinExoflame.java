@@ -1,4 +1,4 @@
-package io.yukkuric.botania_overpowered.mixin;
+package io.yukkuric.botania_overpowered.mixin.flower;
 
 import io.yukkuric.botania_overpowered.create.BurnerExoflameHandler;
 import net.minecraft.core.BlockPos;

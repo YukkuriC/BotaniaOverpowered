@@ -1,4 +1,4 @@
-package io.yukkuric.botania_overpowered.mixin;
+package io.yukkuric.botania_overpowered.mixin.item;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
