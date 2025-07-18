@@ -20,6 +20,7 @@ public abstract class MixinStarcaller extends ThrowableCopyEntity {
 
     @WrapOperation(method = "onHitEntity", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z"))
     boolean starStrike(Entity instance, DamageSource source, float amount, Operation<Boolean> original) {
+        if (BotaniaOPConfig.fallingStarSkipsNonLiving() && !(instance instanceof LivingEntity)) return false;
         var ownerRaw = getOwner();
         if (!BotaniaOPConfig.fallingStarInheritsItemDamage() || !(ownerRaw instanceof LivingEntity attacker))
             return original.call(instance, source, amount);

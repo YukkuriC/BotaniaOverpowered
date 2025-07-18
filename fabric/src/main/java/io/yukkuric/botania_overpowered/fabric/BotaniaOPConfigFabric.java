@@ -47,6 +47,7 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public final PropertyMirror<Boolean> cfg_terraBladeBeamInheritsItemDamage = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_chainLightningInheritsItemDamage = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Boolean> cfg_fallingStarInheritsItemDamage = PropertyMirror.create(BOOLEAN);
+    public final PropertyMirror<Boolean> cfg_fallingStarSkipsNonLiving = PropertyMirror.create(BOOLEAN);
     public final PropertyMirror<Integer> cfg_multiplyFEGeneratorOutput = PropertyMirror.create(INTEGER);
     public boolean showManaAmount() {
         return cfg_showManaAmount.getValue();
@@ -141,6 +142,9 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
     public boolean fallingStarInheritsItemDamage() {
         return cfg_fallingStarInheritsItemDamage.getValue();
     }
+    public boolean fallingStarSkipsNonLiving() {
+        return cfg_fallingStarSkipsNonLiving.getValue();
+    }
     public int multiplyFEGeneratorOutput() {
         return cfg_multiplyFEGeneratorOutput.getValue();
     }
@@ -229,6 +233,8 @@ public class BotaniaOPConfigFabric implements BotaniaOPConfig.CommonAccess {
                 .withComment(desc_chainLightningInheritsItemDamage).finishValue(cfg_chainLightningInheritsItemDamage::mirror)
                 .beginValue("fallingStarInheritsItemDamage", BOOLEAN, true)
                 .withComment(desc_fallingStarInheritsItemDamage).finishValue(cfg_fallingStarInheritsItemDamage::mirror)
+                .beginValue("fallingStarSkipsNonLiving", BOOLEAN, true)
+                .withComment(desc_fallingStarSkipsNonLiving).finishValue(cfg_fallingStarSkipsNonLiving::mirror)
                 .finishBranch();
         builder.fork("Misc")
                 .beginValue("multiplyFEGeneratorOutput", INTEGER, 100)

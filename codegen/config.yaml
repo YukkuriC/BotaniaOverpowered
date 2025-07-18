@@ -185,6 +185,12 @@
   name: fallingStarInheritsItemDamage
   side: common
   type: boolean
+- category: Weapon
+  default: 'true'
+  descrip: Starcaller's stars don't hurt non-living entities like item frames
+  name: fallingStarSkipsNonLiving
+  side: common
+  type: boolean
 - category: Misc
   default: 100, 1, 114514
   descrip: scales the output rate for Power Generator block

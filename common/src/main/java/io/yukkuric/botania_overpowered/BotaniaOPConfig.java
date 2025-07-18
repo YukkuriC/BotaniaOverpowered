@@ -129,6 +129,10 @@ public class BotaniaOPConfig {
     public static boolean fallingStarInheritsItemDamage() {
         return CFG.fallingStarInheritsItemDamage();
     }
+    /// <b>Weapon</b><br>Starcaller's stars don't hurt non-living entities like item frames
+    public static boolean fallingStarSkipsNonLiving() {
+        return CFG.fallingStarSkipsNonLiving();
+    }
     /// <b>Misc</b><br>scales the output rate for Power Generator block
     public static int multiplyFEGeneratorOutput() {
         return CFG.multiplyFEGeneratorOutput();
@@ -165,6 +169,7 @@ public class BotaniaOPConfig {
         String desc_terraBladeBeamInheritsItemDamage = "Terra Blade beams inherit damage (and fire aspect) from the sword";
         String desc_chainLightningInheritsItemDamage = "Thundercaller's chain lightning inherits damage (and fire aspect) from the sword";
         String desc_fallingStarInheritsItemDamage = "Starcaller's stars inherit damage (and fire aspect) from the sword";
+        String desc_fallingStarSkipsNonLiving = "Starcaller's stars don't hurt non-living entities like item frames";
         String desc_multiplyFEGeneratorOutput = "scales the output rate for Power Generator block";
         boolean showManaAmount();
         boolean keepRedString();
@@ -197,6 +202,7 @@ public class BotaniaOPConfig {
         boolean terraBladeBeamInheritsItemDamage();
         boolean chainLightningInheritsItemDamage();
         boolean fallingStarInheritsItemDamage();
+        boolean fallingStarSkipsNonLiving();
         int multiplyFEGeneratorOutput();
     }
 }

@@ -57,6 +57,7 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
     -   Terra Blade beams inherit damage (and fire aspect) from the sword
     -   Thundercaller's chain lightning inherits damage (and fire aspect) from the sword
     -   Starcaller's stars inherit damage (and fire aspect) from the sword
+    -   Starcaller's stars don't hurt non-living entities like item frames
 -   Display & Misc features
     -   displays the _`Evil`_ mana numbers
         -   also appear inside the wand HUDs when player crouches

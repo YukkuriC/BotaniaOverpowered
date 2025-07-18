@@ -109,6 +109,9 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
     public boolean fallingStarInheritsItemDamage() {
         return cfg_fallingStarInheritsItemDamage.get();
     }
+    public boolean fallingStarSkipsNonLiving() {
+        return cfg_fallingStarSkipsNonLiving.get();
+    }
     public int multiplyFEGeneratorOutput() {
         return cfg_multiplyFEGeneratorOutput.get();
     }
@@ -137,6 +140,7 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
             cfg_terraBladeBeamInheritsItemDamage,
             cfg_chainLightningInheritsItemDamage,
             cfg_fallingStarInheritsItemDamage,
+            cfg_fallingStarSkipsNonLiving,
             cfg_MekasuitHelmetAcceptsAncientWill;
     public ForgeConfigSpec.IntValue
             cfg_ruleLifeGameNew,
@@ -213,6 +217,7 @@ public class BotaniaOPConfigForge implements BotaniaOPConfig.CommonAccess {
         cfg_terraBladeBeamInheritsItemDamage = builder.comment(desc_terraBladeBeamInheritsItemDamage).define("terraBladeBeamInheritsItemDamage", true);
         cfg_chainLightningInheritsItemDamage = builder.comment(desc_chainLightningInheritsItemDamage).define("chainLightningInheritsItemDamage", true);
         cfg_fallingStarInheritsItemDamage = builder.comment(desc_fallingStarInheritsItemDamage).define("fallingStarInheritsItemDamage", true);
+        cfg_fallingStarSkipsNonLiving = builder.comment(desc_fallingStarSkipsNonLiving).define("fallingStarSkipsNonLiving", true);
         builder.pop();
 
         builder.push("Misc");
