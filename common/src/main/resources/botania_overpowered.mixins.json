@@ -20,6 +20,7 @@
     "flower.MixinExoflame",
     "flower.MixinNarslimmus",
     "flower.MixinThermalily",
+    "item.MixinStarcaller",
     "item.MixinTerraBlade",
     "item.MixinThundercaller"
   ],

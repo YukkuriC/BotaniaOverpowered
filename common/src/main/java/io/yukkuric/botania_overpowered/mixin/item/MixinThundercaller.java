@@ -27,7 +27,7 @@ public class MixinThundercaller {
     }
 
     @WrapOperation(method = "hurtEnemy", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z"))
-    boolean burstWithBlade(LivingEntity instance, DamageSource source, float amount, Operation<Boolean> original,
+    boolean wrapLightning(LivingEntity instance, DamageSource source, float amount, Operation<Boolean> original,
                            @Local(ordinal = 1, argsOnly = true) LivingEntity attacker
     ) {
         if (!BotaniaOPConfig.chainLightningInheritsItemDamage())
