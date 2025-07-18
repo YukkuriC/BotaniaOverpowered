@@ -8,19 +8,20 @@
   ],
   "mixins": [
     "BlazeBurnerAccessor",
-    "flower.MixinDandelifeon",
     "MixinDandelifeon$ITable",
+    "MixinFEBlockEntity",
+    "MixinGaiaGuardian",
+    "MixinPylonPump",
+    "enchanter.MixinEnchanterBE",
+    "enchanter.MixinEnchanterBlock",
+    "flower.MixinDandelifeon",
     "flower.MixinEndoflame",
     "flower.MixinEntropinnyum",
     "flower.MixinExoflame",
-    "MixinFEBlockEntity",
-    "MixinGaiaGuardian",
     "flower.MixinNarslimmus",
-    "MixinPylonPump",
-    "item.MixinTerraBlade",
     "flower.MixinThermalily",
-    "enchanter.MixinEnchanterBE",
-    "enchanter.MixinEnchanterBlock"
+    "item.MixinTerraBlade",
+    "item.MixinThundercaller"
   ],
   "injectors": {
     "defaultRequire": 1
