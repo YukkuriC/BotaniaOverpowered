@@ -24,6 +24,11 @@ public abstract class MixinStarcaller extends ThrowableCopyEntity {
         var ownerRaw = getOwner();
         if (!BotaniaOPConfig.fallingStarInheritsItemDamage() || !(ownerRaw instanceof LivingEntity attacker))
             return original.call(instance, source, amount);
-        return WeaponHelpers.wrapAttackTargetWithWeapon(attacker, instance, source, original, 0);
+        var dmg = WeaponHelpers.getAttackDamage(attacker, instance);
+        // check crit
+        if (Math.random() < 0.25) {
+            dmg *= 2;
+        }
+        return WeaponHelpers.wrapAttackTargetWithWeapon(attacker, instance, source, original, dmg);
     }
 }
