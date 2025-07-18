@@ -10,7 +10,7 @@ import vazkii.botania.client.render.block_entity.RedStringBlockEntityRenderer;
 
 @Mixin(RedStringBlockEntityRenderer.class)
 public class MixinRedStringDisplay {
-    @Shadow
+    @Shadow(remap = false)
     private static int transparency;
     @Inject(method = "tick", at = @At("HEAD"), remap = false, cancellable = true)
     private static void alwaysDisplay(CallbackInfo ci) {
