@@ -61,7 +61,7 @@ An addon of [Botania](https://github.com/VazkiiMods/Botania) about some enhancem
 -   Display & Misc features
     -   displays the _`Evil`_ mana numbers
         -   also appear inside the wand HUDs when player crouches
-    -   always show red strings even without wand in hand
-        -   _might have inpact on frame rate, use at your own risk_
+    -   always show red strings even without wand in hand (`OFF` by default)
+        -   _might have impact on frame rate, use at your own risk_
     -   scales up output power for Power Generator block
 -   Config for all features above
