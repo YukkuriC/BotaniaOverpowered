@@ -3,6 +3,7 @@
   "package": "io.yukkuric.botania_overpowered.mixin",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
+  "plugin": "io.yukkuric.botania_overpowered.mixin_interface.BotaniaOPMixinPlugin",
   "client": [
     "MixinRedStringDisplay",
     "hud.MixinHUDNums"
