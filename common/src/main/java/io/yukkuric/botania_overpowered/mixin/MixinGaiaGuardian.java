@@ -50,7 +50,7 @@ public abstract class MixinGaiaGuardian extends Mob {
     void decreasesHordeTime(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         // only when damage cancelled & started summoning
         if (cir.getReturnValue() || mobSpawnTicks >= MOB_SPAWN_TICKS) return;
-        if (level().isClientSide) return; // fixes #8
+        if (getLevel().isClientSide) return; // fixes #8
         var ticksSkip = BotaniaOPConfig.decreasesInvulTimeByAttacking();
         if (ticksSkip <= 0) return;
 
