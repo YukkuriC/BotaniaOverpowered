@@ -51,10 +51,11 @@ public abstract class MixinDandelifeon extends GeneratingFlowerBlockEntity {
         }
     }
 
+    private List<LifeUpdate> changes = new ArrayList<>();
     private void replaceSimulationInner() {
         if (radius <= 0) return;
         var table = TABLE.get(radius, this);
-        List<LifeUpdate> changes = new ArrayList<>();
+        changes.clear();
 
         int diameter = table.getDiameter();
         int allowDist = 1;
