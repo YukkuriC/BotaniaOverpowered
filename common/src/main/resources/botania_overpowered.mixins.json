@@ -24,6 +24,7 @@
     "flower.MixinThermalily",
     "item.MixinStarcaller",
     "item.MixinTerraBlade",
+    "item.MixinTerraBladeOld",
     "item.MixinThundercaller"
   ],
   "injectors": {
