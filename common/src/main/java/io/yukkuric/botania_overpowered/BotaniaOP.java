@@ -9,8 +9,6 @@ public abstract class BotaniaOP {
     public static final Logger LOGGER = LogUtils.getLogger();
     static BotaniaOP INSTANCE;
 
-    public abstract boolean isModLoaded(String id);
-
     public BotaniaOP() {
         DandelifeonRules.keepAlive();
         INSTANCE = this;

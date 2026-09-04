@@ -4,8 +4,8 @@ import com.simibubi.create.content.processing.burner.BlazeBurnerBlockEntity;
 import io.yukkuric.botania_overpowered.BotaniaOP;
 import io.yukkuric.botania_overpowered.BotaniaOPConfig;
 import io.yukkuric.botania_overpowered.create.BurnerExoflameHandler;
+import io.yukkuric.yclib.YCLib;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.loader.api.FabricLoader;
 import vazkii.botania.api.BotaniaFabricCapabilities;
 
 public final class BotaniaOPFabric extends BotaniaOP implements ModInitializer {
@@ -14,7 +14,7 @@ public final class BotaniaOPFabric extends BotaniaOP implements ModInitializer {
         BotaniaOPConfigFabric.setup();
 
         // exoflame create handler
-        if (isModLoaded("create")) {
+        YCLib.tryLoadInterop("create", () -> {
             BotaniaFabricCapabilities.EXOFLAME_HEATABLE.registerFallback((world, pos, state, blockEntity, context) -> {
                 if (BotaniaOPConfig.heatsBlazeBurner() && blockEntity instanceof BlazeBurnerBlockEntity burner) {
                     return new BurnerExoflameHandler(burner);
@@ -22,11 +22,6 @@ public final class BotaniaOPFabric extends BotaniaOP implements ModInitializer {
                     return null;
                 }
             });
-        }
-    }
-
-    @Override
-    public boolean isModLoaded(String id) {
-        return FabricLoader.getInstance().isModLoaded(id);
+        });
     }
 }
